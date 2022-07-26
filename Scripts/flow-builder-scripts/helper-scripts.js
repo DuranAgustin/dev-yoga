@@ -4,7 +4,6 @@ export function initialGet() {
   fetch(YOGA_API)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.items);
       for (let i = 0; i < data.items.length; i++) {
         console.log(data.items[i].english_name);
         const title = data.items[i].english_name;
@@ -23,9 +22,16 @@ function cardCreate(title, text, img) {
   <div class = "card-body">
     <h5 class="card-title">${title}</h5>
     <p class="card-text">${text}</p>
-    <button class="btn btn-light">Add Pose</button>
   </div>
   `;
+  newDiv.addEventListener('click', () => {
+    var copyDiv = newDiv.cloneNode();
+    copyDiv.innerHTML = newDiv.innerHTML;
+    copyDiv.addEventListener('click', () => {
+      copyDiv.remove();
+    });
+    document.getElementById('new-flow-container').appendChild(copyDiv);
+  });
   document.getElementById('pose-grid').appendChild(newDiv);
 }
 
