@@ -1,5 +1,6 @@
 const YOGA_API = 'https://lightning-yoga-api.herokuapp.com/yoga_poses';
 
+//Gets all poses from the yoga api
 export function initialGet() {
   fetch(YOGA_API)
     .then((res) => res.json())
@@ -13,10 +14,10 @@ export function initialGet() {
     });
 }
 
+//used to create the cards and append them to their container
 function cardCreate(title, text, img) {
   var newDiv = document.createElement('div');
   newDiv.setAttribute('class', 'card');
-  newDiv.setAttribute('style', 'width: 16rem');
   newDiv.innerHTML = `
   <div class = "card-body">
   <img class='card-img-top' src='${img}' alt='card image top'>
@@ -24,20 +25,25 @@ function cardCreate(title, text, img) {
     <p class="card-text">${text}</p>
   </div>
   `;
+
   newDiv.addEventListener('click', () => {
-    var copyDiv = newDiv.cloneNode();
-    copyDiv.innerHTML = newDiv.innerHTML;
-    copyDiv.setAttribute('class', 'card newCard');
-    copyDiv.addEventListener('click', () => {
-      copyDiv.remove();
-    });
-    document.getElementById('new-flow-container').appendChild(copyDiv);
+    addToList(newDiv);
   });
   document.getElementById('pose-grid').appendChild(newDiv);
 }
 
-function imgGenerator() {}
+//function to add the node to the pose list for the flow
+export function addToList(node) {
+  var copyDiv = node.cloneNode();
+  copyDiv.innerHTML = node.innerHTML;
+  copyDiv.setAttribute('class', 'card newCard');
+  copyDiv.addEventListener('click', () => {
+    copyDiv.remove();
+  });
+  document.getElementById('new-flow-container').appendChild(copyDiv);
+}
 
+//used to save the flow once the user has built their desired workout
 export function saveFlow() {
   let collectionTitle = prompt('Please provide a title for your new flow');
   if (collectionTitle) {
@@ -45,9 +51,6 @@ export function saveFlow() {
     const poses = Array.from(
       document.getElementById('new-flow-container').childNodes
     );
-
-    //removing the button element from the array of nodes
-    poses.shift();
 
     poses.forEach((element) => {
       const poseObj = {

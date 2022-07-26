@@ -142,12 +142,13 @@
     <!--HEADER END-->
 
     <!--NEW FLOW CONTAINER-->
-    <section id="new-flow-container"><button id="save-flow">Save New Flow</button></section>
+    <button id="save-flow">Save New Flow</button>
+    <section id="new-flow-container"></section>
 
     <!-- POSE CARDS CONTAINER (Will be populated dynamically) -->
     <section id="pose-cards-container">
       <section id="search-bar">
-        <input type="text" id="filter-cards" /><button id="filter-button">
+        <input type="text" id="filter-cards" placeholder="search for a pose"/><button id="filter-button">
           <svg
             stroke="currentColor"
             fill="currentColor"
@@ -164,6 +165,27 @@
         </button>
       </section>
       <section id="pose-grid">
+        <div class="card">
+        <div class = "card-body" id="repeat">
+          <img class='card-img-top' src='../images/icons8-repeat-64.png' alt='card image top'>
+            <h5 class="card-title">Repeat</h5>
+            <p class="card-text">Repeat the previous movements</p>
+          </div>
+        </div>
+        <div class="card" id="right">
+          <div class = "card-body">
+            <img class='card-img-top' src='../images/icons8-right-arrow-64.png' alt='card image top'>
+              <h5 class="card-title">Right Side</h5>
+              <p class="card-text">Do the following movements on the right side</p>
+            </div>
+          </div>
+          <div class="card" id="left">
+            <div class = "card-body">
+              <img class='card-img-top' src='../images/icons8-left-arrow-64.png' alt='card image top'>
+                <h5 class="card-title">Left Side</h5>
+                <p class="card-text">Do the following movements on the left side</p>
+              </div>
+            </div>
       </section>
 <!-- Chat bot -->
 

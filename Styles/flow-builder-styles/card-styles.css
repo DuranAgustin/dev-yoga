@@ -11,7 +11,8 @@
 
 #new-flow-container {
   margin: 25px 50px 0px 100px;
-  height: 300px;
+  min-height: 300px;
+  max-height: fit-content;
   background: #465350;
   border-radius: 18px;
   display: flex;
@@ -20,9 +21,8 @@
 
 #save-flow {
   position: relative;
-  top: 240px;
-  left: 85%;
-  right: 25%;
+  left: 80%;
+  right: 40%;
   margin: 0.5em;
   border-radius: 15px;
   border: none;
@@ -92,6 +92,7 @@
 .card {
   margin: 10px;
   height: 275px;
+  width: 16rem;
   overflow: hidden;
   color: var(#465350);
   background-image: url(https://images.unsplash.com/photo-1579291465628-98115e927a42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
@@ -100,19 +101,19 @@
 
 .card:hover {
   overflow: visible;
-  width: 25rem;
   height: fit-content;
   cursor: pointer;
 }
 
 .newCard {
+  height: 150px;
+  width: 9rem;
   margin-top: 10px;
-  margin-right: -250px;
+  margin-right: -50px;
 }
 
 .newCard:hover {
   overflow: hidden;
-  height: 275px;
 }
 
 .btn {
