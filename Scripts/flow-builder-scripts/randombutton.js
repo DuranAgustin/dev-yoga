@@ -1,15 +1,26 @@
+document.getElementById("randomBtn").addEventListener("click", initialGet);
+
 const YOGA_API = "https://lightning-yoga-api.herokuapp.com/yoga_poses";
 
 export function initialGet() {
+  if (document.getElementById("pose-grid") !== null) {
+    document.getElementById("pose-grid").innerHTML = "";
+    console.log("clicked random again");
+  }
   fetch(YOGA_API)
     .then((res) => res.json())
     .then((data) => {
-      for (let i = 0; i < data.items.length; i++) {
-        const title = data.items[i].english_name;
-        const text = data.items[i].yoga_categories[0].description;
-        const img = data.items[i].img_url;
-        cardCreate(title, text, img);
+      const mySet = new Set();
+
+      while (mySet.size < 16) {
+        mySet.add(Math.floor(Math.random() * 48));
       }
+      mySet.forEach((element) => {
+        const title = data.items[element].english_name;
+        const text = data.items[element].yoga_categories[0].description;
+        const img = data.items[element].img_url;
+        cardCreate(title, text, img);
+      });
     });
 }
 
@@ -24,15 +35,9 @@ function cardCreate(title, text, img) {
     <p class="card-text">${text}</p>
   </div>
   `;
-  newDiv.addEventListener("click", () => {
-    var copyDiv = newDiv.cloneNode();
-    copyDiv.innerHTML = newDiv.innerHTML;
-    copyDiv.setAttribute("class", "card newCard");
-    copyDiv.addEventListener("click", () => {
-      copyDiv.remove();
-    });
-    document.getElementById("new-flow-container").appendChild(copyDiv);
-  });
+
+  document.getElementById("main").innerHTML =
+    "Please hold each pose for two minutes!";
   document.getElementById("pose-grid").appendChild(newDiv);
 }
 
@@ -40,9 +45,7 @@ function imgGenerator() {}
 
 export function saveFlow() {
   let allPoses = [];
-  const poses = Array.from(
-    document.getElementById("new-flow-container").childNodes
-  );
+  const poses = Array.from(document.getElementById("main").childNodes);
 
   //removing the button element from the array of nodes
   poses.shift();

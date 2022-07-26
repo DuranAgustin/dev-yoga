@@ -1,5 +1,5 @@
-import { initialGet, saveFlow } from './helper-scripts.js';
+import { initialGet, saveFlow } from "./helper-scripts.js";
 
 initialGet();
 
-document.getElementById('save-flow').addEventListener('click', saveFlow);
+document.getElementById("save-flow").addEventListener("click", saveFlow);
