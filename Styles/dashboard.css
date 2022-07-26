@@ -1,0 +1,52 @@
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.b-example-divider {
+  height: 3rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: solid rgba(0, 0, 0, 0.15);
+  border-width: 1px 0;
+  box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+    inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+  background-color: #a5a694 !important;
+  border-color: #73585f;
+  color: azure;
+}
+.btn-primary:hover {
+  background-color: #73585f !important;
+  border-color: #a5a694;
+  color: azure;
+}
+
+.btn-outline-info {
+  background-color: #a5a694 !important;
+  border-color: #73585f;
+  color: azure;
+}
+.btn-outline-info:hover {
+  background-color: #73585f !important;
+  border-color: #a5a694;
+  color: azure;
+}
+.bg-dark {
+  --bs-bg-opacity: 1;
+  background-color: #73585f !important;
+}
+
+.logo {
+  max-width: 4rem;
+}
