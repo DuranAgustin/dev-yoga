@@ -1,3 +1,5 @@
+import { submitFunc } from '../../CRUD/post-flows.js';
+
 const YOGA_API = 'https://lightning-yoga-api.herokuapp.com/yoga_poses';
 
 //Gets all poses from the yoga api
@@ -62,7 +64,7 @@ export function addToList(node) {
 export function saveFlow() {
   let collectionTitle = prompt('Please provide a title for your new flow');
   if (collectionTitle) {
-    let allPoses = [{ title: collectionTitle }, { poses: [] }];
+    let allPoses = [];
     const poses = Array.from(
       document.getElementById('new-flow-container').childNodes
     );
@@ -71,11 +73,13 @@ export function saveFlow() {
       const poseObj = {
         poseName: element.querySelector('.card-title').innerHTML,
         poseDescription: element.querySelector('.card-text').innerHTML,
+        poseImage: element.querySelector('.card-img-top').src,
       };
-      allPoses[1].poses.push(poseObj);
+      allPoses.push(poseObj);
       element.remove();
     });
     //For each card you need to get the title and the innertext
+    submitFunc(collectionTitle, allPoses);
     alert(`${collectionTitle} flow was successfully saved`);
     console.log(allPoses);
   }
