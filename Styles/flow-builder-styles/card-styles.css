@@ -10,15 +10,28 @@
 }
 
 #new-flow-container {
-  margin-right: 50px;
-  margin-left: 100px;
-  margin-top: 25px;
+  margin: 25px 50px 0px 100px;
   height: 300px;
   background: var(--deep-red);
   display: flex;
   flex-wrap: wrap;
 }
 
+#save-flow {
+  position: relative;
+  top: 240px;
+  left: 85%;
+  right: 25%;
+  margin: 0.5em;
+  border-radius: 15px;
+  border: none;
+  height: 46px;
+  width: 150px;
+  outline: none;
+  background: var(--search-background);
+  color: var(--white);
+  cursor: pointer;
+}
 #pose-cards-container {
   margin-top: 50px;
   margin-right: 50px;
@@ -68,19 +81,28 @@
 
 .card {
   margin: 10px;
-  height: 250px;
+  height: 275px;
   overflow: hidden;
-  color: var(--white);
-  background-image: url(https://images.unsplash.com/photo-1571030905044-7458c2a7ac24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGNhbG1pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60);
+  color: var(--forest-green);
+  background-image: url(https://images.unsplash.com/photo-1579291465628-98115e927a42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
   box-shadow: var(--background-shadow);
 }
 
 .card:hover {
   overflow: visible;
   width: 25rem;
-  z-index: 1000;
   height: fit-content;
   cursor: pointer;
+}
+
+.newCard {
+  margin-top: 10px;
+  margin-right: -250px;
+}
+
+.newCard:hover {
+  overflow: none;
+  height: 250px;
 }
 
 .btn {

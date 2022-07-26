@@ -5,7 +5,6 @@ export function initialGet() {
     .then((res) => res.json())
     .then((data) => {
       for (let i = 0; i < data.items.length; i++) {
-        console.log(data.items[i].english_name);
         const title = data.items[i].english_name;
         const text = data.items[i].yoga_categories[0].description;
         const img = data.items[i].img_url;
@@ -20,6 +19,7 @@ function cardCreate(title, text, img) {
   newDiv.setAttribute('style', 'width: 16rem');
   newDiv.innerHTML = `
   <div class = "card-body">
+  <img class='card-img-top' src='${img}' alt='card image top'>
     <h5 class="card-title">${title}</h5>
     <p class="card-text">${text}</p>
   </div>
@@ -27,6 +27,7 @@ function cardCreate(title, text, img) {
   newDiv.addEventListener('click', () => {
     var copyDiv = newDiv.cloneNode();
     copyDiv.innerHTML = newDiv.innerHTML;
+    copyDiv.setAttribute('class', 'card newCard');
     copyDiv.addEventListener('click', () => {
       copyDiv.remove();
     });
@@ -37,6 +38,23 @@ function cardCreate(title, text, img) {
 
 function imgGenerator() {}
 
-function addPose() {}
+export function saveFlow() {
+  let allPoses = [];
+  const poses = Array.from(
+    document.getElementById('new-flow-container').childNodes
+  );
 
-function savePose() {}
+  //removing the button element from the array of nodes
+  poses.shift();
+
+  poses.forEach((element) => {
+    const poseObj = {
+      poseName: element.querySelector('.card-title').innerHTML,
+      poseDescription: element.querySelector('.card-text').innerHTML,
+    };
+    allPoses.push(poseObj);
+  });
+  //For each card you need to get the title and the innertext
+
+  console.log(allPoses);
+}
