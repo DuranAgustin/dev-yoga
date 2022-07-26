@@ -17,6 +17,7 @@
   border-radius: 18px;
   display: flex;
   flex-wrap: wrap;
+  padding: 25px;
 }
 
 #save-flow {
@@ -114,6 +115,7 @@
 
 .newCard:hover {
   overflow: hidden;
+  height: 150px;
 }
 
 .btn {
