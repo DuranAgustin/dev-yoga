@@ -1,0 +1,76 @@
+/* Variables for CSS build */
+:root {
+  --purple: #73585f;
+  --white: #e9eaf2;
+  --forest-green: #35402a;
+  --beige: #a5a694;
+  --deep-red: #402a22;
+  --sacramento: 'Sacramento', cursive;
+  --search-background: #7c7c7c2b;
+}
+
+#new-flow-container {
+  margin: 50px 25px 50px 25px;
+  height: 250px;
+  background: var(--deep-red);
+}
+
+#pose-cards-container {
+  margin-top: 50px;
+  margin-right: 50px;
+  margin-left: 100px;
+  height: max-content;
+  border-radius: 15px;
+  background: var(--forest-green);
+}
+
+#search-bar {
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 25px;
+}
+
+#filter-cards {
+  border: none;
+  outline: none;
+  padding: 0.5em 1em;
+  border-radius: 24px;
+  background: var(--search-background);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 120%;
+}
+
+#filter-button {
+  margin: 0.5em;
+  border-radius: 50%;
+  border: none;
+  height: 46px;
+  width: 46px;
+  outline: none;
+  background: var(--search-background);
+  color: var(--white);
+  cursor: pointer;
+}
+
+#pose-grid {
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 10px;
+  color: var(--white);
+  background-image: url(https://images.unsplash.com/photo-1571030905044-7458c2a7ac24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGNhbG1pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60);
+  box-shadow: var(--background-shadow);
+}
+
+.btn {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  box-shadow: 2px 5px var(--search-background);
+}

@@ -1,3 +1,4 @@
+/* Variables for CSS build */
 :root {
   --purple: #73585f;
   --white: #e9eaf2;
@@ -5,17 +6,25 @@
   --beige: #a5a694;
   --deep-red: #402a22;
   --sacramento: 'Sacramento', cursive;
+  --background-shadow: 0 2px 4px 0 rgba(11, 12, 12, 0.979),
+    0 5px 15px 0 rgba(5, 5, 5, 0.233);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Lato', sans-serif;
+  background-color: var(--white);
+  height: 100%;
 }
 
 .sidenav {
   height: 100%;
-  width: 280px;
+  width: 0px;
   position: fixed;
-  z-index: 0;
+  z-index: 1000;
   top: 0;
   left: 0;
   background-color: #111;
