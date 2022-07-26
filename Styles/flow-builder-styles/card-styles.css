@@ -29,10 +29,19 @@
   height: 46px;
   width: 150px;
   outline: none;
-  background: var(--search-background);
-  color: var(--white);
+  background: #a5a6947b;
+  color: var(--forest-green);
   cursor: pointer;
 }
+
+#save-flow:hover {
+  background: var(--beige);
+}
+
+#save-flow:active {
+  background: #a5a6947b;
+}
+
 #pose-cards-container {
   margin-top: 50px;
   margin-right: 50px;
@@ -102,7 +111,7 @@
 }
 
 .newCard:hover {
-  overflow: none;
+  overflow: hidden;
   height: 275px;
 }
 

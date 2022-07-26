@@ -39,22 +39,26 @@ function cardCreate(title, text, img) {
 function imgGenerator() {}
 
 export function saveFlow() {
-  let allPoses = [];
-  const poses = Array.from(
-    document.getElementById('new-flow-container').childNodes
-  );
+  let collectionTitle = prompt('Please provide a title for your new flow');
+  if (collectionTitle) {
+    let allPoses = [{ title: collectionTitle }, { poses: [] }];
+    const poses = Array.from(
+      document.getElementById('new-flow-container').childNodes
+    );
 
-  //removing the button element from the array of nodes
-  poses.shift();
+    //removing the button element from the array of nodes
+    poses.shift();
 
-  poses.forEach((element) => {
-    const poseObj = {
-      poseName: element.querySelector('.card-title').innerHTML,
-      poseDescription: element.querySelector('.card-text').innerHTML,
-    };
-    allPoses.push(poseObj);
-  });
-  //For each card you need to get the title and the innertext
-
-  console.log(allPoses);
+    poses.forEach((element) => {
+      const poseObj = {
+        poseName: element.querySelector('.card-title').innerHTML,
+        poseDescription: element.querySelector('.card-text').innerHTML,
+      };
+      allPoses[1].poses.push(poseObj);
+      element.remove();
+    });
+    //For each card you need to get the title and the innertext
+    alert(`${collectionTitle} flow was successfully saved`);
+    console.log(allPoses);
+  }
 }
