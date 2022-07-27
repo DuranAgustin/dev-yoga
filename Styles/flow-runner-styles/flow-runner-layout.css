@@ -1,0 +1,41 @@
+*body {
+  box-sizing: border-box;
+}
+
+.pose {
+  height: 350px;
+  width: 300px;
+  border-radius: 18px;
+}
+
+#flow-title {
+  margin-top: 10px;
+  text-align: center;
+}
+
+#pose-and-clock {
+  display: flex;
+  flex-wrap: wrap;
+  height: 350px;
+}
+
+#upcoming {
+  margin: 50px;
+  background: red;
+}
+
+#previous {
+  margin: 50px;
+  background: red;
+}
+
+#pose-only {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+#current {
+  background: red;
+}

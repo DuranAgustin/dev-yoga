@@ -1,0 +1,127 @@
+Variables for CSS build :root {
+  --purple: #73585f;
+  --white: #e9eaf2;
+  --forest-green: #35402a;
+  --beige: #a5a694;
+  --deep-red: #402a22;
+  --sacramento: 'Sacramento', cursive;
+  --search-background: #7c7c7c2b;
+}
+
+#new-flow-container {
+  margin: 25px 50px 0px 100px;
+  min-height: 300px;
+  max-height: fit-content;
+  background: #465350;
+  border-radius: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 25px;
+}
+
+#save-flow {
+  position: relative;
+  left: 80%;
+  right: 40%;
+  margin: 0.5em;
+  border-radius: 15px;
+  border: none;
+  height: 46px;
+  width: 150px;
+  outline: none;
+  background: #a5a6947b;
+  color: var(--forest-green);
+  cursor: pointer;
+}
+
+#save-flow:hover {
+  background: var(--beige);
+}
+
+#save-flow:active {
+  background: #a5a6947b;
+}
+
+#pose-cards-container {
+  margin-top: 50px;
+  margin-right: 50px;
+  margin-left: 100px;
+  height: max-content;
+  border-radius: 15px;
+  background: #465350;
+}
+
+#search-bar {
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 25px;
+}
+
+#filter-cards {
+  border: none;
+  outline: none;
+  padding: 0.5em 1em;
+  border-radius: 24px;
+  background: #7c7c7c2b;
+  color: var(--white);
+  font-family: inherit;
+  font-size: 120%;
+}
+
+#filter-button {
+  margin: 0.5em;
+  border-radius: 50%;
+  border: none;
+  height: 46px;
+  width: 46px;
+  outline: none;
+  background: #7c7c7c2b;
+  color: var(--white);
+  cursor: pointer;
+}
+
+#pose-grid {
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 10px;
+  height: 275px;
+  width: 16rem;
+  overflow: hidden;
+  color: var(#465350);
+  background-image: url(https://images.unsplash.com/photo-1579291465628-98115e927a42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
+  box-shadow: var(--background-shadow);
+}
+
+.card:hover {
+  overflow: visible;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.newCard {
+  height: 150px;
+  width: 9rem;
+  margin-top: 10px;
+  margin-right: -50px;
+}
+
+.newCard:hover {
+  overflow: hidden;
+  height: 150px;
+}
+
+.bg-dark {
+  --bs-bg-opacity: 1;
+  background-color: var(--forest-green) !important;
+}
+
+.logo {
+  max-width: 4rem;
+}

@@ -66,7 +66,15 @@ function timer(seconds) {
 
   intervalTimer = setInterval(function () {
     timeLeft = Math.round((remainTime - Date.now()) / 1000);
-    if (timeLeft < 0) {
+    if (timeLeft < 0 && timerCount < timerRun) {
+      beep.play();
+      clearInterval(intervalTimer);
+      displayTimeLeft(wholeTime);
+      isStarted = false;
+      timerCount++;
+      pauseTimer();
+    } else if (timeLeft < 0) {
+      // swapping
       clearInterval(intervalTimer);
       isStarted = false;
       setterBtns.forEach(function (btn) {
@@ -77,13 +85,6 @@ function timer(seconds) {
       pauseBtn.classList.remove('pause');
       pauseBtn.classList.add('play');
       return;
-    } else if (timeLeft === 0 && timerCount < timerRun) {
-      beep.play();
-      clearInterval(intervalTimer);
-      displayTimeLeft(wholeTime);
-      isStarted = false;
-      timerCount++;
-      pauseTimer();
     }
     displayTimeLeft(timeLeft);
   }, 1000);
