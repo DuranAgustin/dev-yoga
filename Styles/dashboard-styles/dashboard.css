@@ -57,7 +57,7 @@
   --forest-green: #35402a;
   --beige: #a5a694;
   --deep-red: #402a22;
-  --sacramento: 'Sacramento', cursive;
+  --sacramento: "Sacramento", cursive;
   --background-shadow: 0 2px 4px 0 rgba(11, 12, 12, 0.979),
     0 5px 15px 0 rgba(5, 5, 5, 0.233);
 }
@@ -67,7 +67,7 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   background-color: var(--white);
   height: 100%;
 }
@@ -143,16 +143,14 @@ header {
   width: 100%;
   height: 100%;
   justify-content: center;
-  font-size: 2rem;
-  text-align: center;
 }
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,300');
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300");
 
 button[data-setter] {
   outline: none;
   background: transparent;
   border: none;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 300;
   font-size: 18px;
   width: 25px;
@@ -199,7 +197,7 @@ button[data-setter]:hover {
 }
 
 .display-remain-time {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 100;
   font-size: 65px;
   color: #f7958e;
@@ -217,7 +215,7 @@ button[data-setter]:hover {
 
 .play::before {
   display: block;
-  content: '';
+  content: "";
   position: absolute;
   top: 8px;
   left: 16px;
@@ -227,7 +225,7 @@ button[data-setter]:hover {
 }
 
 .pause::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 8px;
   left: 12px;
