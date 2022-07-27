@@ -126,10 +126,13 @@
     <!--HEADER END-->
     <main>
       <h4 id="flow-title">Current Workout: Flow Title</h4>
+      <h4 id="side-repeat"><em>Right Side</em></h4>
       <section id="pose-and-clock">
         <section id="upcoming" class="pose">
-          <img src="" />
-          <p>Upcoming..</p>
+          <img id="upcoming-img" class="pose-img" src="" />
+          <p id="upcoming-text" class="info-text">
+            <strong>Upcoming:</strong> Warrior Pose
+          </p>
         </section>
         <div class="containers" id="clock-container">
           <div class="setters">
@@ -164,13 +167,24 @@
             <button class="play" id="pause"></button>
           </div>
         </div>
-        <section id="previous" class="pose"></section>
+        <section id="previous" class="pose">
+          <img id="previous-img" class="pose-img" src="" />
+          <p id="previous-text" class="info-text">
+            <strong>Previous:</strong> Warrior Pose
+          </p>
+        </section>
       </section>
       <section id="pose-only">
-        <section id="current" class="pose"></section>
+        <section id="current" class="pose">
+          <img id="current-img" class="pose-img" src="" />
+          <p id="current-text" class="info-text">
+            <strong>Current:</strong> Warrior Pose
+          </p>
+        </section>
       </section>
     </main>
-    <script src="../Scripts/flow-builder-scripts/clock.js"></script>
+    <script src="../Scripts/flow-runner-scripts/flow-runner-init.js"></script>
+    <script src="../Scripts/flow-runner-scripts/clock.js"></script>
     <script src="../Scripts/nav-bar.js"></script>
   </body>
 </html>

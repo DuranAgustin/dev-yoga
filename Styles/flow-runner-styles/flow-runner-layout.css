@@ -1,3 +1,15 @@
+/* //variables for css build */
+:root {
+  --purple: #73585f;
+  --white: #e9eaf2;
+  --forest-green: #35402a;
+  --light-green: #465350;
+  --beige: #a5a694;
+  --deep-red: #402a22;
+  --sacramento: 'Sacramento', cursive;
+  --search-background: #7c7c7c2b;
+}
+
 *body {
   box-sizing: border-box;
 }
@@ -6,10 +18,19 @@
   height: 350px;
   width: 300px;
   border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background: #465350;
+  color: var(--white);
 }
 
 #flow-title {
   margin-top: 10px;
+  text-align: center;
+}
+
+#side-repeat {
   text-align: center;
 }
 
@@ -21,12 +42,12 @@
 
 #upcoming {
   margin: 50px;
-  background: red;
+  margin-top: 10px;
 }
 
 #previous {
   margin: 50px;
-  background: red;
+  margin-top: 10px;
 }
 
 #pose-only {
@@ -36,6 +57,17 @@
   padding-bottom: 50px;
 }
 
-#current {
-  background: red;
+/* #current {
+} */
+
+.pose-img {
+  height: 300px;
+  width: 300px;
+  border-top-right-radius: 18px;
+  border-top-left-radius: 18px;
+}
+
+.info-text {
+  margin-top: 10px;
+  text-align: center;
 }
