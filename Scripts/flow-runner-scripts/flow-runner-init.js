@@ -1,33 +1,53 @@
-const sideOrRepeat = document.getElementById('side-repeat');
-
-const upcomingText = document.getElementById('upcoming-text');
-const upcomingImg = document.getElementById('upcoming-img');
-
-const currentText = document.getElementById('current-text');
-const currentImg = document.getElementById('current-img');
-
-const previousText = document.getElementById('previous-text');
-const previousImg = document.getElementById('previous-img');
-
 //Fetch the workout that needs to be shown, place the workout in an array
 const serverURL = `https://dev-yoga-api.herokuapp.com/`;
 
-fetch(serverURL)
-  .then((res) => res.json())
-  .then((data) => {
-    const flowArray = data[0].flow;
-    firstRound(flowArray);
-  });
+// let newArray = getArray();
+// newArray.then((result) => {
+//   console.log(result);
+// });
 
-function firstRound(array) {
-  previousText.innerHTML = `<strong>Previous</strong>: ${array[0].poseName}`;
-  previousImg.src = array[0].poseImage;
+export async function getArray() {
+  const res = await fetch(serverURL);
+  const data = await res.json();
+  const dataFlow = await data[0].flow;
+  const newFlowArray = arrayConfig(dataFlow);
+  return newFlowArray;
+}
 
-  currentText.innerHTML = `<strong>Current</strong>: ${array[1].poseName}`;
-  currentImg.src = array[1].poseImage;
-
-  upcomingText.innerHTML = `<strong>Upcoming</strong>: ${array[2].poseName}`;
-  upcomingImg.src = array[2].poseImage;
+function arrayConfig(array) {
+  let repeating = false;
+  let repeatCount = 0;
+  let repeatArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (repeating === true && array[i].poseName !== 'Repeat') {
+      repeatArray.push(array[i]);
+    } else if (array[i].poseName === 'Repeat' && repeating === true) {
+      repeating = false;
+    } else if (
+      array[i].poseName === 'Right Side' ||
+      array[i].poseName === 'Left Side'
+    ) {
+      repeatArray.push(array[i]);
+    } else if (array[i].poseName === 'Repeat') {
+      if (array[i + 1]) {
+        if (
+          array[i + 1].poseName === 'Left Side' ||
+          array[i + 1].poseName === 'Right Side'
+        ) {
+          repeatArray.push(array[i + 1]);
+          array.splice(i + 1, 1);
+        }
+      }
+      repeatCount++;
+      i = i - repeatCount;
+      repeating = true;
+      repeatCount = 0;
+    } else {
+      repeatArray.push(array[i]);
+      repeatCount++;
+    }
+  }
+  return repeatArray;
 }
 //fetch needs to be configured to fetch based on id right now have a manual list
 //update the title to show the flow title
