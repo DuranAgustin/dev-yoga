@@ -263,7 +263,6 @@ button[data-setter]:hover {
 #e-pointer {
   transition: transform 0.7s;
 }
-
 body {
   background-color: #f7f7f7;
 }
