@@ -22,11 +22,8 @@
     rel="stylesheet"
   />
 
-    <link rel="stylesheet" href="../Styles/dashboard.css">
-    <link
-    rel="stylesheet"
-    href="../Styles/flow-builder-styles/card-styles.css"
-  />
+    <link rel="stylesheet" href="../Styles/dashboard-styles/dashboard.css">
+    <link rel="stylesheet" href="../Styles/flow-builder-styles/card-styles.css">
   </head>
   <title>Dashboard</title>
   </head>
@@ -60,17 +57,6 @@
               height="35"
             />
             Dashboard
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./flow-builder.html" class="nav-link" aria-current="page">
-            <img
-              src="../images/muladhara-red.png"
-              class="bi pe-none me-2"
-              width="40"
-              height="40"
-            />
-            Saved Flows
           </a>
         </li>
         <li class="nav-item">
@@ -113,7 +99,7 @@
       <h1 id="page-title">Dashboard </h1>
     </header>   
 
-    <section class="py-5 text-center container">
+    <section class="text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
           <h1 class="fw-light">Yoga workouts!</h1>
@@ -127,9 +113,13 @@
         </div>
       </div>
     </section>
+    <h3>Your Saved Flows</h3>
+    <section id="saved-flows">
+      
+    </section>
     <main id="main">
-
     </main>
+    <div id="pb-widget"></div>
     <div class="containers" id="clock-container">
       <div class="setters">
         <div class="minutes-set">
@@ -184,13 +174,26 @@
       </section>
       <section id="dash-pose-grid">
       </section>
-
-   
+<!--Chat Bot-->
+     
+      <script>
+        var bot_config = {
+          PB_HOST: "home",
+          PB_BOTKEY: "V5vcilejcMkVOzQssHhV-R3Yysv5YYsilN0B7wzmjlcaeYTB8p8g363JILW_WUzf7aA2-Iy-5BE3cg2tMwf2vjceDY0VBKVR",
+          title: "Yoga Build Assistant",
+          colors: { theme: "#73585F", text: "#FFFFFF" },
+          descriptionTitle: "vacationdestinations",
+        }
+      </script>
+      
+      <!-- Other scripts -->
+      <script src="https://widget.pandorabots.com/prod/pb-widget.js" type="text/javascript"></script>
     <script src="../Scripts/nav-bar.js"></script>
     <script
       type="module"
       src="../Scripts/flow-builder-scripts/randombutton.js"
     ></script>   
 <script src="../Scripts/flow-builder-scripts/clock.js"></script>
+<script type="module" src="../Scripts/dashboard-scripts/saved-flow-init.js"></script>
   </body>
 </html>

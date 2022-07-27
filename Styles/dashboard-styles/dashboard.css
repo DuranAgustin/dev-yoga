@@ -310,3 +310,22 @@ body {
   color: var(--white);
   cursor: pointer;
 }
+
+#saved-flows {
+  height: 500px;
+  margin: 50px;
+  border-radius: 18px;
+  padding-left: 50px;
+  padding-top: 25px;
+  background: #465350;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h3 {
+  text-align: center;
+}
+
+#flow-card {
+  height: 200px;
+}

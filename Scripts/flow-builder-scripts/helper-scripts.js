@@ -1,4 +1,3 @@
-
 import { submitFunc } from '../../CRUD/post-flows.js';
 
 const YOGA_API = 'https://lightning-yoga-api.herokuapp.com/yoga_poses';
@@ -32,7 +31,6 @@ export function initialGet() {
     });
 }
 
-
 //used to create the cards and append them to their container
 export function cardCreate(title, text, img) {
   var newDiv = document.createElement('div');
@@ -48,9 +46,24 @@ export function cardCreate(title, text, img) {
   newDiv.addEventListener('click', () => {
     addToList(newDiv);
   });
-  document.getElementById("pose-grid").appendChild(newDiv);
+  document.getElementById('pose-grid').appendChild(newDiv);
 }
 
+export function cardCreateNoImg(title, id) {
+  var newDiv = document.createElement('div');
+  newDiv.setAttribute('class', 'card');
+  newDiv.setAttribute('id', 'flow-card');
+  newDiv.setAttribute('style', 'width: 18rem');
+  newDiv.setAttribute('db-id', `${id}`);
+  newDiv.innerHTML = `
+  <div class="card-body">
+  <h5 class="card-title">${title}</h5>
+  <button class="btn-primary">Start Flow</button>
+  <button class="btn-primary">Delete Flow</button>
+  </div>
+  `;
+  document.getElementById('saved-flows').appendChild(newDiv);
+}
 //function to add the node to the pose list for the flow
 export function addToList(node) {
   var copyDiv = node.cloneNode();
