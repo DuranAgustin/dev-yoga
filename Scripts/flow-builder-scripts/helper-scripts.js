@@ -1,3 +1,4 @@
+
 import { submitFunc } from '../../CRUD/post-flows.js';
 
 const YOGA_API = 'https://lightning-yoga-api.herokuapp.com/yoga_poses';
@@ -31,6 +32,7 @@ export function initialGet() {
     });
 }
 
+
 //used to create the cards and append them to their container
 export function cardCreate(title, text, img) {
   var newDiv = document.createElement('div');
@@ -46,7 +48,7 @@ export function cardCreate(title, text, img) {
   newDiv.addEventListener('click', () => {
     addToList(newDiv);
   });
-  document.getElementById('pose-grid').appendChild(newDiv);
+  document.getElementById("pose-grid").appendChild(newDiv);
 }
 
 //function to add the node to the pose list for the flow
