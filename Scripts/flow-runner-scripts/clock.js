@@ -48,7 +48,6 @@ function cardSet(flowArray, index) {
     upcomingText.innerText = flowArray[index + 1].poseName;
   } else {
     upcomingText.innerHTML = '<h1><em>FINAL MOVE</em></h1>';
-    upcomingText.style.marginTop = '165px';
     upcomingImg.style.display = 'none';
   }
 }

@@ -21,7 +21,7 @@ const setterBtns = document.querySelectorAll('button[data-setter]');
 
 let intervalTimer;
 let timeLeft;
-let wholeTime = 2 * 2; // manage this to set the whole time
+let wholeTime = 60 * 2; // manage this to set the whole time
 let isPaused = false;
 let isStarted = false;
 let timerRun = 16;
