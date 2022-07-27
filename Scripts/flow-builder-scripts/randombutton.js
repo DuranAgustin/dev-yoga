@@ -1,12 +1,15 @@
-document.getElementById("randomBtn").addEventListener("click", initialGet);
+document.getElementById('randomBtn').addEventListener('click', randomGet);
 
-const YOGA_API = "https://lightning-yoga-api.herokuapp.com/yoga_poses";
+const YOGA_API = 'https://lightning-yoga-api.herokuapp.com/yoga_poses';
 
-export function initialGet() {
-  if (document.getElementById("pose-grid") !== null) {
-    document.getElementById("pose-grid").innerHTML = "";
-    console.log("clicked random again");
+export function randomGet() {
+  document.getElementById('clock-container').style.display = 'block';
+  document.getElementById('dash-pose-cards-container').style.display = 'block';
+  if (document.getElementById('dash-pose-grid') !== null) {
+    document.getElementById('dash-pose-grid').innerHTML = '';
+    console.log('clicked random again');
   }
+
   fetch(YOGA_API)
     .then((res) => res.json())
     .then((data) => {
@@ -25,9 +28,9 @@ export function initialGet() {
 }
 
 function cardCreate(title, text, img) {
-  var newDiv = document.createElement("div");
-  newDiv.setAttribute("class", "card");
-  newDiv.setAttribute("style", "width: 16rem");
+  var newDiv = document.createElement('div');
+  newDiv.setAttribute('class', 'card');
+  newDiv.setAttribute('style', 'width: 16rem');
   newDiv.innerHTML = `
   <div class = "card-body">
   <img class='card-img-top' src='${img}' alt='card image top'>
@@ -36,24 +39,24 @@ function cardCreate(title, text, img) {
   </div>
   `;
 
-  document.getElementById("main").innerHTML =
-    "Please hold each pose for two minutes!";
-  document.getElementById("pose-grid").appendChild(newDiv);
+  document.getElementById('main').innerHTML =
+    'Please hold each pose for two minutes!';
+  document.getElementById('dash-pose-grid').appendChild(newDiv);
 }
 
 function imgGenerator() {}
 
 export function saveFlow() {
   let allPoses = [];
-  const poses = Array.from(document.getElementById("main").childNodes);
+  const poses = Array.from(document.getElementById('main').childNodes);
 
   //removing the button element from the array of nodes
   poses.shift();
 
   poses.forEach((element) => {
     const poseObj = {
-      poseName: element.querySelector(".card-title").innerHTML,
-      poseDescription: element.querySelector(".card-text").innerHTML,
+      poseName: element.querySelector('.card-title').innerHTML,
+      poseDescription: element.querySelector('.card-text').innerHTML,
     };
     allPoses.push(poseObj);
   });
