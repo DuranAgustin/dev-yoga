@@ -69,7 +69,6 @@ body {
 
 header {
   height: 150px;
-  background-color: var(--beige);
   color: var(--white);
   font-size: 2em;
 }
@@ -79,5 +78,6 @@ header {
   text-align: center;
   position: relative;
   font-size: 2em;
+  top: 25px;
   bottom: 25px;
 }

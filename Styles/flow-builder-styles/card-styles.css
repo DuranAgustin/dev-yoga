@@ -11,34 +11,45 @@
 
 #new-flow-container {
   margin: 25px 50px 0px 100px;
-  height: 300px;
-  background: var(--deep-red);
+  min-height: 300px;
+  max-height: fit-content;
+  background: #465350;
+  border-radius: 18px;
   display: flex;
   flex-wrap: wrap;
+  padding: 25px;
 }
 
 #save-flow {
   position: relative;
-  top: 240px;
-  left: 85%;
-  right: 25%;
+  left: 80%;
+  right: 40%;
   margin: 0.5em;
   border-radius: 15px;
   border: none;
   height: 46px;
   width: 150px;
   outline: none;
-  background: var(--search-background);
-  color: var(--white);
+  background: #a5a6947b;
+  color: var(--forest-green);
   cursor: pointer;
 }
+
+#save-flow:hover {
+  background: var(--beige);
+}
+
+#save-flow:active {
+  background: #a5a6947b;
+}
+
 #pose-cards-container {
   margin-top: 50px;
   margin-right: 50px;
   margin-left: 100px;
   height: max-content;
   border-radius: 15px;
-  background: var(--forest-green);
+  background: #465350;
 }
 
 #search-bar {
@@ -82,27 +93,29 @@
 .card {
   margin: 10px;
   height: 275px;
+  width: 16rem;
   overflow: hidden;
-  color: var(--forest-green);
+  color: var(#465350);
   background-image: url(https://images.unsplash.com/photo-1579291465628-98115e927a42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
   box-shadow: var(--background-shadow);
 }
 
 .card:hover {
   overflow: visible;
-  width: 25rem;
   height: fit-content;
   cursor: pointer;
 }
 
 .newCard {
+  height: 150px;
+  width: 9rem;
   margin-top: 10px;
-  margin-right: -250px;
+  margin-right: -50px;
 }
 
 .newCard:hover {
-  overflow: none;
-  height: 275px;
+  overflow: hidden;
+  height: 150px;
 }
 
 .btn {
