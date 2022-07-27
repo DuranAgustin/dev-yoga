@@ -1,10 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="../Styles/flow-runner-styles/site-styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../Styles/flow-runner-styles/card-styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../Styles/flow-runner-styles/clock-layout.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../Styles/flow-runner-styles/flow-runner-layout.css"
+    />
     <title>Flow Runner</title>
   </head>
-  <body></body>
+  <body>
+    <!--NAV BAR START-->
+    <div
+      id="mySidenav"
+      class="sidenav d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+    >
+      <a
+        href="#"
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+      >
+        <img
+          class="bi pe-none me-2"
+          src="../images/dev-yoga-logo-red.png"
+          width="50"
+          height="50"
+          id="logo-img"
+        />
+        <span class="fs-4">Dev-Yoga</span>
+      </a>
+      <hr />
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="./dashboard.html" class="nav-link" aria-current="page">
+            <img
+              src="../images/manipura-red.png"
+              class="bi pe-none me-2"
+              width="35"
+              height="35"
+            />
+            Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="./flow-builder.html" class="nav-link" aria-current="page">
+            <img
+              src="../images/vishuddha-red.png"
+              class="bi pe-none me-2"
+              width="35"
+              height="35"
+            />
+            Flow Builder
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="./flow-runner.html" class="nav-link" aria-current="page">
+            <img
+              src="../images/svadishthana-red.png"
+              class="bi pe-none me-2"
+              width="35"
+              height="35"
+            />
+            Flow Runner
+          </a>
+        </li>
+      </ul>
+      <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+    <!--NAV BAR END-->
+    <!--HEADER-->
+    <header>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <span
+            style="
+              margin-left: 45px;
+              font-size: 45px;
+              cursor: pointer;
+              display: inline;
+            "
+            onclick="openNav()"
+          >
+            &#9776;</span
+          >
+          <h1 id="page-title">Flow Runner</h1>
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <img
+              src="../images/dev-yoga-logo-red.png"
+              alt="logo"
+              class="logo"
+            />
+            <strong>Dev.Yoga</strong>
+          </a>
+        </div>
+      </div>
+    </header>
+    <!--HEADER END-->
+    <main>
+      <h4 id="flow-title">Current Workout: Flow Title</h4>
+      <section id="pose-and-clock">
+        <section id="upcoming" class="pose">
+          <img src="" />
+          <p>Upcoming..</p>
+        </section>
+        <div class="containers" id="clock-container">
+          <div class="setters">
+            <div class="minutes-set">
+              <button data-setter="minutes-plus">+</button>
+              <button data-setter="minutes-minus">-</button>
+            </div>
+            <div class="seconds-set">
+              <button data-setter="seconds-plus">+</button>
+              <button data-setter="seconds-minus">-</button>
+            </div>
+          </div>
+          <div class="circle">
+            <svg
+              width="300"
+              viewBox="0 0 220 220"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g transform="translate(110,110)">
+                <circle r="100" class="e-c-base" />
+                <g transform="rotate(-90)">
+                  <circle r="100" class="e-c-progress" />
+                  <g id="e-pointer">
+                    <circle cx="100" cy="0" r="8" class="e-c-pointer" />
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="controlls">
+            <div class="display-remain-time">00:30</div>
+            <button class="play" id="pause"></button>
+          </div>
+        </div>
+        <section id="previous" class="pose"></section>
+      </section>
+      <section id="pose-only">
+        <section id="current" class="pose"></section>
+      </section>
+    </main>
+    <script src="../Scripts/flow-builder-scripts/clock.js"></script>
+    <script src="../Scripts/nav-bar.js"></script>
+  </body>
 </html>
