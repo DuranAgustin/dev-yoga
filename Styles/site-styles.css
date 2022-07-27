@@ -68,9 +68,12 @@ body {
 }
 
 header {
-  height: 150px;
   color: var(--white);
   font-size: 2em;
+}
+
+.container {
+  height: 150px;
 }
 
 #page-title {

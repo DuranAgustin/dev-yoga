@@ -1,5 +1,4 @@
-/* Variables for CSS build */
-:root {
+Variables for CSS build :root {
   --purple: #73585f;
   --white: #e9eaf2;
   --forest-green: #35402a;
@@ -65,7 +64,7 @@
   outline: none;
   padding: 0.5em 1em;
   border-radius: 24px;
-  background: var(--search-background);
+  background: #7c7c7c2b;
   color: var(--white);
   font-family: inherit;
   font-size: 120%;
@@ -78,7 +77,7 @@
   height: 46px;
   width: 46px;
   outline: none;
-  background: var(--search-background);
+  background: #7c7c7c2b;
   color: var(--white);
   cursor: pointer;
 }
@@ -118,8 +117,11 @@
   height: 150px;
 }
 
-.btn {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  box-shadow: 2px 5px var(--search-background);
+.bg-dark {
+  --bs-bg-opacity: 1;
+  background-color: #73585f !important;
+}
+
+.logo {
+  max-width: 4rem;
 }
