@@ -139,8 +139,6 @@ export function saveFlow() {
   }
 }
 
-export function removeNodes(parentElm) {}
-
 export function updateFlow() {
   let flowTitle = prompt('Please enter the name of the update flow');
   let dataFlow = getById(flowTitle);
