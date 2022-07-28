@@ -10,11 +10,10 @@ export async function submitFunc(title, flow, id) {
     }),
   })
     .then((res) => {
-      if (res.ok) res.json();
+      res.json();
     })
     .then((data) => {
-      console.log(data);
-      // window.location.reload(true);
+      window.location.reload(true);
     });
 }
 
