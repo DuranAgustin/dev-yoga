@@ -17,6 +17,7 @@ const main = document.querySelector('main');
 //circle start
 try {
   var flowArray = await getArray(sessionStorage.getItem('id'));
+  console.log(flowArray);
 } catch (error) {
   console.log(error);
 }
@@ -121,7 +122,6 @@ if (flowArray) {
     });
   }
 
-  //TODO - refactor the timer so that it runs based on the number of nodes in the array
   function timer(seconds) {
     //counts time, takes seconds
     let remainTime = Date.now() + seconds * 1000;
@@ -156,6 +156,7 @@ if (flowArray) {
 
   function pauseTimer() {
     if (isStarted === false) {
+      document.getElementById('flow-title').style.display = 'none';
       timer(wholeTime);
       isStarted = true;
       this.classList.remove('play');
