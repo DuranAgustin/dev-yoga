@@ -22,6 +22,20 @@ export async function getById(id) {
   return dataFlow;
 }
 
+export async function getFlowByUID(id) {
+  const serverURL = `https://dev-yoga-api.herokuapp.com/flows/userId${id}`;
+  fetch(serverURL)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      data.forEach((element) => {
+        const id = element._id;
+        const title = element.title;
+        cardCreateNoImg(title, id);
+      });
+    });
+}
+
 export async function getUserByEmail(email) {
   try {
     const serverURL = `https://dev-yoga-api.herokuapp.com/user/email${email}`;
