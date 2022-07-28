@@ -1,7 +1,7 @@
 export async function submitFunc(title, flow) {
-  await fetch('https://dev-yoga-api.herokuapp.com/flows', {
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
+  await fetch("https://dev-yoga-api.herokuapp.com/flows", {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       title: title,
       flow: flow,
