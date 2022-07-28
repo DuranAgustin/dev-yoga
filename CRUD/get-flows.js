@@ -1,5 +1,4 @@
 import { cardCreateNoImg } from '../Scripts/flow-builder-scripts/helper-scripts.js';
-const dashboardView = document.getElementById('saved-flows');
 
 export function dbGet() {
   const serverURL = `https://dev-yoga-api.herokuapp.com/`;

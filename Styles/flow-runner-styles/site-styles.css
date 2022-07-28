@@ -6,8 +6,9 @@
   --beige: #a5a694;
   --deep-red: #402a22;
   --sacramento: 'Sacramento', cursive;
-  --background-shadow: 0 2px 4px 0 rgba(11, 12, 12, 0.979),
-    0 5px 15px 0 rgba(5, 5, 5, 0.233);
+  --background-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 * {

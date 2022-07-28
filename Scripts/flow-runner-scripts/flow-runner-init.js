@@ -1,21 +1,12 @@
 import { getById } from '../../CRUD/get-flows.js';
 
 //Fetch the workout that needs to be shown, place the workout in an array
+const flowTitle = document.getElementById('flow-title');
 const serverURL = `https://dev-yoga-api.herokuapp.com/`;
-
-// export function getById(id) {
-//   const serverURL = `https://dev-yoga-api.herokuapp.com/flows/find${id}`;
-//   fetch(serverURL)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       console.log(data);
-//     });
-// }
 
 export async function getArray(id) {
   const dataFlow = await getById(id);
   const newFlowArray = arrayConfig(dataFlow);
-  console.log(newFlowArray);
   return newFlowArray;
 }
 
@@ -54,11 +45,6 @@ function arrayConfig(array) {
   }
   return repeatArray;
 }
-//fetch needs to be configured to fetch based on id right now have a manual list
-//update the title to show the flow title
-//update upcoming to show the second pose
-//update current to show the first pose
-//update previous to show the first pose -1 (if -1 then show no image)
 
 function cardSet(flowArray, index) {
   //Checking for right or left side
@@ -90,7 +76,7 @@ function cardSet(flowArray, index) {
     upcomingImg.src = flowArray[index + 1].poseImage;
     upcomingText.innerText = flowArray[index + 1].poseName;
   } else {
-    upcomingText.innerHTML = '<h1><em>FINAL MOVE</em></h1>';
+    upcomingText.innerHTML = `<h1><em>FINAL MOVE</em></h1>`;
     upcomingText.style.marginTop = '165px';
     upcomingImg.style.display = 'none';
   }

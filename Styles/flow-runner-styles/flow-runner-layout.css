@@ -33,7 +33,11 @@
 }
 
 #side-repeat {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-top: 15px;
+  font-size: 3em;
   text-align: center;
+  color: #73585f;
 }
 
 #pose-and-clock {
@@ -110,4 +114,11 @@
 .info-text {
   margin-top: 10px;
   text-align: center;
+}
+
+#error {
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 3em;
+  text-align: center;
+  margin-top: 15%;
 }

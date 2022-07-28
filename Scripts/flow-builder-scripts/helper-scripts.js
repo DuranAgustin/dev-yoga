@@ -1,5 +1,6 @@
 import { handleRemove } from '../../CRUD/delete-flows.js';
 import { submitFunc } from '../../CRUD/post-flows.js';
+import { imageURL } from '../dashboard-scripts/image-get.js';
 
 const YOGA_API = 'https://lightning-yoga-api.herokuapp.com/yoga_poses';
 
@@ -50,19 +51,35 @@ export function cardCreate(title, text, img) {
   document.getElementById('pose-grid').appendChild(newDiv);
 }
 
-export function cardCreateNoImg(title, id) {
-  var newDiv = document.createElement('div');
-  newDiv.setAttribute('class', 'card');
-  newDiv.setAttribute('id', 'flow-card');
-  newDiv.setAttribute('style', 'width: 18rem');
-  newDiv.setAttribute('db-id', `${id}`);
+//this function is long because it needs to create elements separately so that the buttons have listeners
+export async function cardCreateNoImg(title, id) {
+  let myImg = await imageURL();
+  let newA = document.createElement('a');
+  newA.setAttribute('class', 'card');
+  newA.setAttribute('db-id', `${id}`);
+
+  newA.innerHTML = `
+  <img src="${myImg}" class="card__image" alt="test"/>
+  `;
+
+  let newDiv = document.createElement('div');
+  newDiv.setAttribute('class', 'card__overlay');
+
   newDiv.innerHTML = `
-  <div class="card-body">
-  <h5 class="card-title">${title}</h5>
+  <div class="card__header">
+      <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+      <img class="card__thumb" src="../images/lotus-red.png" alt="" />
+      <div class="card__header-text">
+      <h3 class="card__title"><strong>${title}</strong></h3>            
+  </div> 
   </div>
   `;
-  var newBtn = document.createElement('button');
-  newBtn.setAttribute('class', 'btn btn-primary');
+
+  let newP = document.createElement('p');
+  newP.setAttribute('class', 'card__description');
+
+  let newBtn = document.createElement('button');
+  newBtn.setAttribute('class', 'btn btn-primary mybtn');
   newBtn.innerText = 'Delete';
   newBtn.addEventListener('click', () => {
     if (confirm(`Are you sure you want to delete ${title}`)) {
@@ -70,16 +87,20 @@ export function cardCreateNoImg(title, id) {
     }
   });
 
-  var newBtnStart = document.createElement('button');
-  newBtnStart.setAttribute('class', 'btn btn-secondary');
+  let newBtnStart = document.createElement('button');
+  newBtnStart.setAttribute('class', 'btn btn-primary mybtn');
   newBtnStart.innerText = 'Start Flow';
   newBtnStart.addEventListener('click', () => {
-    console.log('Start Clicked');
+    sessionStorage.setItem('id', id);
+    location.href = './flow-runner.html';
   });
-  newDiv.appendChild(newBtnStart);
-  newDiv.appendChild(newBtn);
 
-  document.getElementById('saved-flows').appendChild(newDiv);
+  newP.appendChild(newBtn);
+  newP.appendChild(newBtnStart);
+
+  newDiv.appendChild(newP);
+  newA.appendChild(newDiv);
+  document.getElementById('saved-flows').appendChild(newA);
 }
 //function to add the node to the pose list for the flow
 export function addToList(node) {
