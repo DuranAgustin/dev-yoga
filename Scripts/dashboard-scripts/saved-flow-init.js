@@ -1,3 +1,3 @@
-import { dbGet } from '../../CRUD/get-flows.js';
+import { dbGet, getFlowByUID } from '../../CRUD/get-flows.js';
 
-dbGet();
+getFlowByUID(localStorage.getItem('currentUser'));

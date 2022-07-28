@@ -112,7 +112,8 @@ export function saveFlow() {
       element.remove();
     });
     //For each card you need to get the title and the innertext
-    submitFunc(collectionTitle, allPoses);
+    let userId = localStorage.getItem('currentUser');
+    submitFunc(collectionTitle, allPoses, userId);
     alert(`${collectionTitle} flow was successfully saved`);
     console.log(allPoses);
   }
