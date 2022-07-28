@@ -1,14 +1,21 @@
-//Fetch the workout that needs to be shown, place the workout in an array
+import { getById } from '../../CRUD/get-flows.js';
 
+//Fetch the workout that needs to be shown, place the workout in an array
 const serverURL = `https://dev-yoga-api.herokuapp.com/`;
 
-export async function getArray() {
-  const res = await fetch(serverURL);
-  const data = await res.json();
-  const title = await data[0].title;
-  console.log(title);
-  const dataFlow = await data[0].flow;
+// export function getById(id) {
+//   const serverURL = `https://dev-yoga-api.herokuapp.com/flows/find${id}`;
+//   fetch(serverURL)
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log(data);
+//     });
+// }
+
+export async function getArray(id) {
+  const dataFlow = await getById(id);
   const newFlowArray = arrayConfig(dataFlow);
+  console.log(newFlowArray);
   return newFlowArray;
 }
 
