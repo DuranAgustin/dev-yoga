@@ -1,0 +1,86 @@
+/* Variables for CSS build */
+:root {
+  --purple: #73585f;
+  --white: #e9eaf2;
+  --forest-green: #35402a;
+  --beige: #a5a694;
+  --deep-red: #402a22;
+  --sacramento: 'Sacramento', cursive;
+  --background-shadow: 0 2px 4px 0 rgba(11, 12, 12, 0.979),
+    0 5px 15px 0 rgba(5, 5, 5, 0.233);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--white);
+  height: 100%;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0px;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+#logo-img {
+  border-radius: 50%;
+}
+
+header {
+  color: var(--white);
+  font-size: 2em;
+}
+
+.container {
+  height: 150px;
+}
+
+#page-title {
+  font-family: var(--sacramento);
+  text-align: center;
+  position: relative;
+  font-size: 2em;
+  top: 25px;
+  bottom: 25px;
+}

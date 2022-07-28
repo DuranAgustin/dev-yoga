@@ -1,10 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../Styles/site-styles.css" />
+    <link
+      rel="stylesheet"
+      href="../Styles/flow-builder-styles/card-styles.css"
+    />
     <title>Flow Builder</title>
   </head>
-  <body></body>
+  <body>
+    <!--NAV BAR START-->
+    <div
+      id="mySidenav"
+      class="sidenav d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+    >
+      <a
+        href="#"
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+      >
+        <img
+          class="bi pe-none me-2"
+          src="../images/dev-yoga-logo-red.png"
+          width="50"
+          height="50"
+          id="logo-img"
+        />
+        <span class="fs-4">Dev-Yoga</span>
+      </a>
+      <hr />
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="./dashboard.html" class="nav-link" aria-current="page">
+            <img
+              src="../images/manipura-red.png"
+              class="bi pe-none me-2"
+              width="35"
+              height="35"
+            />
+            Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="./flow-builder.html" class="nav-link" aria-current="page">
+            <img
+              src="../images/vishuddha-red.png"
+              class="bi pe-none me-2"
+              width="35"
+              height="35"
+            />
+            Flow Builder
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="./flow-runner.html" class="nav-link" aria-current="page">
+            <img
+              src="../images/svadishthana-red.png"
+              class="bi pe-none me-2"
+              width="35"
+              height="35"
+            />
+            Flow Runner
+          </a>
+        </li>
+      </ul>
+      <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+    <!--NAV BAR END-->
+    <!--HEADER-->
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-white">
+                Our goal is to get you the most out of your yoga.
+              </p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                <li><a href="#" class="text-white">Like on Facebook</a></li>
+                <li><a href="#" class="text-white">Email me</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <span
+          style="
+            margin-left: 45px;
+            font-size: 45px;
+            cursor: pointer;
+            display: inline;
+          "
+          onclick="openNav()"
+        >
+          &#9776;</span
+        >
+        <h1 id="page-title">Flow Builder</h1>
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <img src="../images/dev-yoga-logo-red.png" alt="logo" class="logo">
+            <strong>Dev.Yoga</strong>
+          </a>
+          
+         
+        </div>
+      </div>
+    </header>
+    <!--HEADER END-->
+
+    <!--NEW FLOW CONTAINER-->
+    <button id="save-flow">Save New Flow</button>
+    <section id="new-flow-container"></section>
+
+    <!-- POSE CARDS CONTAINER (Will be populated dynamically) -->
+    <section id="pose-cards-container">
+      <section id="search-bar">
+        <input type="text" id="filter-cards" placeholder="search for a pose by name"/><button id="filter-button">
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 1024 1024"
+            height="1.5em"
+            width="1.5em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
+            ></path>
+          </svg>
+        </button>
+      </section>
+      <section id="pose-grid">
+        
+      </section>
+<!-- Chat bot -->
+
+<div id="pb-widget"></div>
+<script>
+  var bot_config = {
+    PB_HOST: "home",
+    PB_BOTKEY: "V5vcilejcMkVOzQssHhV-R3Yysv5YYsilN0B7wzmjlcaeYTB8p8g363JILW_WUzf7aA2-Iy-5BE3cg2tMwf2vjceDY0VBKVR",
+    title: "Yoga Build Assistant",
+    colors: { theme: "#73585F", text: "#FFFFFF" },
+    descriptionTitle: "vacationdestinations",
+  }
+</script>
+
+<!-- Other scripts -->
+<script src="https://widget.pandorabots.com/prod/pb-widget.js" type="text/javascript"></script>
+    <script src="../Scripts/nav-bar.js"></script>
+    <script
+      type="module"
+      src="../Scripts/flow-builder-scripts/card-builder.js"
+    ></script>
+    <script type="module" src="../Scripts/flow-builder-scripts/search-flow.js"></script>
+  </body>
 </html>
