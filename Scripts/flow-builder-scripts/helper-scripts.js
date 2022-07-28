@@ -1,12 +1,8 @@
-<<<<<<< HEAD
+
 import { handleRemove } from '../../CRUD/delete-flows.js';
 import { submitFunc } from '../../CRUD/post-flows.js';
 import { imageURL } from '../dashboard-scripts/image-get.js';
-=======
-import { handleRemove } from "../../CRUD/delete-flows.js";
-import { submitFunc } from "../../CRUD/post-flows.js";
 import { dbGet } from "../../CRUD/get-flows.js";
->>>>>>> 179e902 (getting flows to update)
 
 const YOGA_API = "https://lightning-yoga-api.herokuapp.com/yoga_poses";
 
@@ -58,6 +54,7 @@ export function cardCreate(title, text, img) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //this function is long because it needs to create elements separately so that the buttons have listeners
 export async function cardCreateNoImg(title, id) {
   let myImg = await imageURL();
@@ -73,22 +70,24 @@ export async function cardCreateNoImg(title, id) {
   newDiv.setAttribute('class', 'card__overlay');
 
 =======
+=======
+>>>>>>> b74d742 (commit to save)
 export function cardCreateNoImg(title, id) {
   var newDiv = document.createElement("div");
   newDiv.setAttribute("class", "card");
   newDiv.setAttribute("id", "flow-card");
   newDiv.setAttribute("style", "width: 18rem");
   newDiv.setAttribute("db-id", `${id}`);
+<<<<<<< HEAD
 >>>>>>> 179e902 (getting flows to update)
+=======
+>>>>>>> b74d742 (commit to save)
   newDiv.innerHTML = `
-  <div class="card__header">
-      <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-      <img class="card__thumb" src="../images/lotus-red.png" alt="" />
-      <div class="card__header-text">
-      <h3 class="card__title"><strong>${title}</strong></h3>            
-  </div> 
+  <div class="card-body">
+  <h5 class="card-title">${title}</h5>
   </div>
   `;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   let newP = document.createElement('p');
@@ -99,16 +98,22 @@ export function cardCreateNoImg(title, id) {
   newBtn.innerText = 'Delete';
   newBtn.addEventListener('click', () => {
 =======
+=======
+>>>>>>> b74d742 (commit to save)
   var newBtn = document.createElement("button");
   newBtn.setAttribute("class", "btn btn-primary");
   newBtn.innerText = "Delete";
   newBtn.addEventListener("click", () => {
+<<<<<<< HEAD
 >>>>>>> 179e902 (getting flows to update)
+=======
+>>>>>>> b74d742 (commit to save)
     if (confirm(`Are you sure you want to delete ${title}`)) {
       handleRemove(id);
     }
   });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   let newBtnStart = document.createElement('button');
   newBtnStart.setAttribute('class', 'btn btn-primary mybtn');
@@ -117,14 +122,22 @@ export function cardCreateNoImg(title, id) {
     sessionStorage.setItem('id', id);
     location.href = './flow-runner.html';
 =======
+=======
+>>>>>>> b74d742 (commit to save)
   var newBtnStart = document.createElement("button");
   newBtnStart.setAttribute("class", "btn btn-secondary");
   newBtnStart.innerText = "Start Flow";
   newBtnStart.addEventListener("click", () => {
     console.log("Start Clicked");
+<<<<<<< HEAD
 >>>>>>> 179e902 (getting flows to update)
+=======
+>>>>>>> b74d742 (commit to save)
   });
+  newDiv.appendChild(newBtnStart);
+  newDiv.appendChild(newBtn);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   newP.appendChild(newBtn);
   newP.appendChild(newBtnStart);
@@ -135,6 +148,9 @@ export function cardCreateNoImg(title, id) {
 =======
   document.getElementById("saved-flows").appendChild(newDiv);
 >>>>>>> 179e902 (getting flows to update)
+=======
+  document.getElementById("saved-flows").appendChild(newDiv);
+>>>>>>> b74d742 (commit to save)
 }
 //function to add the node to the pose list for the flow
 export function addToList(node) {
@@ -173,30 +189,3 @@ export function saveFlow() {
 }
 
 export function removeNodes(parentElm) {}
-
-export function updateFlow() {
-  let collectionTitle = prompt(
-    "Please provide a title for your flow to update"
-  );
-
-  if (collectionTitle) {
-    let allPoses = [];
-    const poses = Array.from(
-      document.getElementById("new-flow-container").childNodes
-    );
-
-    poses.forEach((element) => {
-      const poseObj = {
-        poseName: element.querySelector(".card-title").innerHTML,
-        poseDescription: element.querySelector(".card-text").innerHTML,
-        poseImage: element.querySelector(".card-img-top").src,
-      };
-      allPoses.push(poseObj);
-      element.remove();
-    });
-    //For each card you need to get the title and the innertext
-    submitFunc(collectionTitle, allPoses);
-    alert(`${collectionTitle} flow was successfully saved`);
-    console.log(allPoses);
-  }
-}
