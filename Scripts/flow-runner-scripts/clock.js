@@ -1,45 +1,52 @@
-import { getById } from "../../CRUD/get-flows.js";
-import { getArray } from "./flow-runner-init.js";
+import { getById } from '../../CRUD/get-flows.js';
+import { getArray } from './flow-runner-init.js';
 
-const sideOrRepeat = document.getElementById("side-repeat");
+const sideOrRepeat = document.getElementById('side-repeat');
 
-const upcomingText = document.getElementById("upcoming-text");
-const upcomingImg = document.getElementById("upcoming-img");
+const upcomingText = document.getElementById('upcoming-text');
+const upcomingImg = document.getElementById('upcoming-img');
 
-const currentText = document.getElementById("current-text");
-const currentImg = document.getElementById("current-img");
+const currentText = document.getElementById('current-text');
+const currentImg = document.getElementById('current-img');
 
-const previousText = document.getElementById("previous-text");
-const previousImg = document.getElementById("previous-img");
+const previousText = document.getElementById('previous-text');
+const previousImg = document.getElementById('previous-img');
 
-const main = document.querySelector("main");
+const main = document.querySelector('main');
 
 //circle start
-let flowArray = await getArray("62e14560b7efb22ded5a14b3");
+try {
+  var flowArray = await getArray(sessionStorage.getItem('id'));
+  console.log(flowArray);
+} catch (error) {
+  console.log(error);
+}
+
+sessionStorage.setItem('id', null);
 if (flowArray) {
   let flowIndex = 0;
   cardSet(flowArray, flowIndex);
 
   function cardSet(flowArray, index) {
     //Checking for right or left side
-    if (flowArray[index].poseName === "Right Side") {
-      sideOrRepeat.innerText = "Right Side";
+    if (flowArray[index].poseName === 'Right Side') {
+      sideOrRepeat.innerText = 'Right Side';
       flowIndex++;
       index++;
     }
 
-    if (flowArray[index].poseName === "Left Side") {
-      sideOrRepeat.innerText = "Left Side";
+    if (flowArray[index].poseName === 'Left Side') {
+      sideOrRepeat.innerText = 'Left Side';
       flowIndex++;
       index++;
     }
     //previous
     if (index === 0) {
-      previousText.innerText = "";
-      previousImg.style.display = "none";
+      previousText.innerText = '';
+      previousImg.style.display = 'none';
     } else {
       previousText.innerText = flowArray[index - 1].poseName;
-      previousImg.style.display = "block";
+      previousImg.style.display = 'block';
       previousImg.src = flowArray[index - 1].poseImage;
     }
     //current
@@ -50,15 +57,15 @@ if (flowArray) {
       upcomingImg.src = flowArray[index + 1].poseImage;
       upcomingText.innerText = flowArray[index + 1].poseName;
     } else {
-      upcomingText.innerHTML = "<h1><em>FINAL MOVE</em></h1>";
-      upcomingImg.style.display = "none";
+      upcomingText.innerHTML = '<h1><em>FINAL MOVE</em></h1>';
+      upcomingImg.style.display = 'none';
     }
   }
 
-  let beep = new Audio("../sounds/ding-ding-sound-effect.mp3");
-  let progressBar = document.querySelector(".e-c-progress");
-  let indicator = document.getElementById("e-indicator");
-  let pointer = document.getElementById("e-pointer");
+  let beep = new Audio('../sounds/ding-ding-sound-effect.mp3');
+  let progressBar = document.querySelector('.e-c-progress');
+  let indicator = document.getElementById('e-indicator');
+  let pointer = document.getElementById('e-pointer');
   let length = Math.PI * 2 * 100;
 
   progressBar.style.strokeDasharray = length;
@@ -70,9 +77,9 @@ if (flowArray) {
   }
 
   //circle ends
-  const displayOutput = document.querySelector(".display-remain-time");
-  const pauseBtn = document.getElementById("pause");
-  const setterBtns = document.querySelectorAll("button[data-setter]");
+  const displayOutput = document.querySelector('.display-remain-time');
+  const pauseBtn = document.getElementById('pause');
+  const setterBtns = document.querySelectorAll('button[data-setter]');
 
   let intervalTimer;
   let timeLeft;
@@ -95,19 +102,19 @@ if (flowArray) {
   }
 
   for (var i = 0; i < setterBtns.length; i++) {
-    setterBtns[i].addEventListener("click", function (event) {
+    setterBtns[i].addEventListener('click', function (event) {
       var param = this.dataset.setter;
       switch (param) {
-        case "minutes-plus":
+        case 'minutes-plus':
           changeWholeTime(1 * 60);
           break;
-        case "minutes-minus":
+        case 'minutes-minus':
           changeWholeTime(-1 * 60);
           break;
-        case "seconds-plus":
+        case 'seconds-plus':
           changeWholeTime(1);
           break;
-        case "seconds-minus":
+        case 'seconds-minus':
           changeWholeTime(-1);
           break;
       }
@@ -115,7 +122,6 @@ if (flowArray) {
     });
   }
 
-  //TODO - refactor the timer so that it runs based on the number of nodes in the array
   function timer(seconds) {
     //counts time, takes seconds
     let remainTime = Date.now() + seconds * 1000;
@@ -140,8 +146,8 @@ if (flowArray) {
           btn.style.opacity = 1;
         });
         displayTimeLeft(wholeTime);
-        pauseBtn.classList.remove("pause");
-        pauseBtn.classList.add("play");
+        pauseBtn.classList.remove('pause');
+        pauseBtn.classList.add('play');
         return;
       }
       displayTimeLeft(timeLeft);
@@ -150,23 +156,24 @@ if (flowArray) {
 
   function pauseTimer() {
     if (isStarted === false) {
+      document.getElementById('flow-title').style.display = 'none';
       timer(wholeTime);
       isStarted = true;
-      this.classList.remove("play");
-      this.classList.add("pause");
+      this.classList.remove('play');
+      this.classList.add('pause');
 
       setterBtns.forEach(function (btn) {
         btn.disabled = true;
         btn.style.opacity = 0.5;
       });
     } else if (isPaused) {
-      this.classList.remove("play");
-      this.classList.add("pause");
+      this.classList.remove('play');
+      this.classList.add('pause');
       timer(timeLeft);
       isPaused = isPaused ? false : true;
     } else {
-      this.classList.remove("pause");
-      this.classList.add("play");
+      this.classList.remove('pause');
+      this.classList.add('play');
       clearInterval(intervalTimer);
       isPaused = isPaused ? false : true;
     }
@@ -176,16 +183,22 @@ if (flowArray) {
     //displays time on the input
     let minutes = Math.floor(timeLeft / 60);
     let seconds = timeLeft % 60;
-    let displayString = `${minutes < 10 ? "0" : ""}${minutes}:${
-      seconds < 10 ? "0" : ""
+    let displayString = `${minutes < 10 ? '0' : ''}${minutes}:${
+      seconds < 10 ? '0' : ''
     }${seconds}`;
     displayOutput.textContent = displayString;
     update(timeLeft, wholeTime);
   }
 
-  pauseBtn.addEventListener("click", pauseTimer);
+  pauseBtn.addEventListener('click', pauseTimer);
 } else if (!flowArray) {
   //TODO create an error div, append the child and request that the user select a file from the dashboard
   //provide a link to the dashboard for them to select an item
-  main.innerHTML = "Please select a flow from the dashboard";
+  main.innerHTML = `<h1 id="error">No Flow Selected:
+  <br><br>Please select a saved flow from the 
+  <a href='./dashboard.html'>dashboard</a>
+  <br><br>
+  OR create a new flow with the <a href='./flow-builder.html'> Flow Builder</a></h1>
+  
+  `;
 }

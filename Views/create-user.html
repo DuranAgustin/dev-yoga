@@ -5,6 +5,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create User</title>
+    <link rel="stylesheet" href="../Styles/style.css">
   </head>
-  <body></body>
+  <body>
+
+        <div class="hero-image">
+          <div class="hero-text">
+            <h1>Welcome to DevYoga</h1>
+            <button onclick="document.getElementById('login').style.display='block'">Login</button>
+            <a href="#" onclick="document.getElementById('signup').style.display='block'">Sign Up</a>
+          </div>
+        </div>
+
+         <div id="login" class="modal">
+              <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <!--LOGIN FORM-->
+              <form class="login-modal" action="/action_page.php"> 
+          <!--TODO ADD LOGO-->      
+          <div class="imgcontainer">
+            <img src="" alt="DevYogaLogo">
+          </div>
+          <div class="container">
+            <h1>Login</h1>
+              <label for="login-email"><b>Email</b></label>
+              <input id="login-email" type="text" placeholder="Enter Email" name="loginemail" required>
+      
+              <label for="password"><b>Password</b></label>
+              <input id="password" type="password" placeholder="Enter Password" name="password" required>
+              
+              <input id="login-modal" type="submit" value="Login" id="login-submit">
+
+          <p class="forgot"><a href="#">Forgot Password?</p>
+        </div>
+          </div>
+          </form>
+            </div>
+
+            <div id="signup" class="modal">
+              <h1>Sign Up for DevYoga</h1>
+             <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <form class="signup-modal" action="/action_page.php">
+          <div class="container">
+            <label for="first name"><b>First Name</b></label>
+            <input id="firstname" type="text" placeholder="First Name" name="First Name" required>
+          
+            <label for="last name"><b>Last Name</b></label>
+            <input id="lastname" type="text" placeholder="Last Name" name="Last Name" required>
+          
+            <label for="email"><b>Email</b></label>
+            <input id="email" type="text" placeholder="Enter Email" name="email" required>
+          
+            <label for="email-confirm"><b>Confirm Email</b></label>
+            <input id="emailconfirm" type="text" placeholder="Confirm Email" name="email" required>
+          
+            <label for="password"><b>Password</b></label>
+            <input id="password" type="password" placeholder="Enter Password" name="psw" required>
+          
+            <label for="passwordconfirm"><b>Confirm Password</b></label>
+            <input id="passwordconfirm" type="password" placeholder="Confirm Password" name="passwordconfirm" required>
+                
+                  
+            <div class="submit_btn">
+              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="submit">Submit</button>
+
+        </div>
+          </div>
+          </form>
+            </div>
+          
+        
+        
+    </div>
+    
+  
+    
+
+
+    
+<script src="script.js"></script> 
+</body>
 </html>
