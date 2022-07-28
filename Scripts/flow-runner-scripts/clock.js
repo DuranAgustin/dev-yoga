@@ -15,7 +15,13 @@ const previousImg = document.getElementById('previous-img');
 const main = document.querySelector('main');
 
 //circle start
-let flowArray = await getArray('62e0971ed0168418315b408d');
+try {
+  var flowArray = await getArray(sessionStorage.getItem('id'));
+} catch (error) {
+  console.log(error);
+}
+
+sessionStorage.setItem('id', null);
 if (flowArray) {
   let flowIndex = 0;
   cardSet(flowArray, flowIndex);
@@ -187,5 +193,11 @@ if (flowArray) {
 } else if (!flowArray) {
   //TODO create an error div, append the child and request that the user select a file from the dashboard
   //provide a link to the dashboard for them to select an item
-  main.innerHTML = 'Please select a flow from the dashboard';
+  main.innerHTML = `<h1 id="error">No Flow Selected:
+  <br><br>Please select a saved flow from the 
+  <a href='./dashboard.html'>dashboard</a>
+  <br><br>
+  OR create a new flow with the <a href='./flow-builder.html'> Flow Builder</a></h1>
+  
+  `;
 }

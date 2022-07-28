@@ -22,29 +22,29 @@
 }
 
 .btn-primary {
-  background-color: #a5a694 !important;
+  background-color: #a5a694;
   border-color: #73585f;
   color: azure;
 }
 .btn-primary:hover {
-  background-color: #73585f !important;
+  background-color: #73585f;
   border-color: #a5a694;
   color: azure;
 }
 
 .btn-outline-info {
-  background-color: #a5a694 !important;
+  background-color: #a5a694;
   border-color: #73585f;
   color: azure;
 }
 .btn-outline-info:hover {
-  background-color: #73585f !important;
+  background-color: #73585f;
   border-color: #a5a694;
   color: azure;
 }
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: #73585f !important;
+  background-color: #73585f;
 }
 
 .logo {
@@ -74,7 +74,7 @@ body {
 
 .sidenav {
   height: 100%;
-  width: 17rem;
+  width: 0;
   position: fixed;
   z-index: 1000;
   top: 0;
