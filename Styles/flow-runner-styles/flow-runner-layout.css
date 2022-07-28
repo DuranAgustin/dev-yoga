@@ -1,4 +1,8 @@
 /* //variables for css build */
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
+
 :root {
   --purple: #73585f;
   --white: #e9eaf2;
@@ -15,8 +19,6 @@
 }
 
 .pose {
-  height: 350px;
-  width: 300px;
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -41,13 +43,30 @@
 }
 
 #upcoming {
+  height: 250px;
+  width: 200px;
   margin: 50px;
+  margin-left: 125px;
   margin-top: 10px;
 }
 
+#upcoming > .pose-img {
+  margin-top: 5px;
+  height: 200px;
+  width: 200px;
+}
 #previous {
+  height: 250px;
+  width: 200px;
   margin: 50px;
+  margin-right: 100px;
   margin-top: 10px;
+}
+
+#previous > .pose-img {
+  margin-top: 5px;
+  height: 200px;
+  width: 200px;
 }
 
 #pose-only {
@@ -57,8 +76,29 @@
   padding-bottom: 50px;
 }
 
-/* #current {
-} */
+#current {
+  height: 350px;
+  width: 300px;
+}
+
+#previous-title {
+  margin-top: -20px;
+  margin-right: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+#current-title {
+  text-align: center;
+  font-size: 2em;
+}
+
+#upcoming-title {
+  margin-top: -20px;
+  margin-left: 55px;
+  text-align: center;
+  font-size: 1.5em;
+}
 
 .pose-img {
   height: 300px;
