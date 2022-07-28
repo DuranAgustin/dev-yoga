@@ -22,4 +22,13 @@ export async function getById(id) {
   return dataFlow;
 }
 
-export async function getUserByEmail(email) {}
+export async function getUserByEmail(email) {
+  try {
+    const serverURL = `https://dev-yoga-api.herokuapp.com/user/email${email}`;
+    const res = await fetch(serverURL);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}

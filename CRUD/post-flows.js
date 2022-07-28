@@ -1,8 +1,10 @@
-export async function submitFunc(title, flow) {
+//creating a new flow
+export async function submitFunc(title, flow, id) {
   await fetch('https://dev-yoga-api.herokuapp.com/flows', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
+      userId: id,
       title: title,
       flow: flow,
     }),
