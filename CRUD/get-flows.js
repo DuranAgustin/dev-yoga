@@ -21,3 +21,5 @@ export async function getById(id) {
   const dataFlow = await data.flow;
   return dataFlow;
 }
+
+export async function getUserByEmail(email) {}

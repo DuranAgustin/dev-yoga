@@ -7,7 +7,7 @@ html {
 /*hero image */
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://www.thehealthy.com/wp-content/uploads/2021/05/GettyImages-1264471889.jpg");
+    url('https://www.thehealthy.com/wp-content/uploads/2021/05/GettyImages-1264471889.jpg');
   border-radius: 10px;
   height: 100%;
   background-position: center;
@@ -36,8 +36,8 @@ html {
   box-sizing: border-box;
 }
 /* Full-width input fields */
-input[type="text"],
-input[type="password"] {
+input[type='text'],
+input[type='password'] {
   text-align: center;
   width: 80%;
   padding: 12px 15px;
@@ -51,8 +51,8 @@ input[type="password"] {
 }
 
 /*when the inputs get focus */
-input[type="text"]:focus,
-input[type="password"]:focus {
+input[type='text']:focus,
+input[type='password']:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -88,6 +88,8 @@ button {
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
+  height: 250px;
+  width: 250px;
 }
 
 button:hover {
@@ -117,7 +119,7 @@ button:hover {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-  url("https://www.thehealthy.com/wp-content/uploads/2021/05/GettyImages-1264471889.jpg");
+    url('https://www.thehealthy.com/wp-content/uploads/2021/05/GettyImages-1264471889.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -128,7 +130,7 @@ button:hover {
 /* Modal Content/Box */
 .login-modal {
   background-color: #fefefe;
-  margin: 5% auto 15% auto; 
+  margin: 5% auto 15% auto;
   border-radius: 20px;
   width: 50%;
 }
@@ -153,7 +155,7 @@ p {
 
 /* Clear floats */
 .submit_btn::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }
@@ -163,4 +165,9 @@ p {
   .signupbtn {
     width: 100%;
   }
+}
+
+#logo-id {
+  height: 250px;
+  width: 250px;
 }
