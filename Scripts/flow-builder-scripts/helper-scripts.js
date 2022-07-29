@@ -1,4 +1,5 @@
 import { handleRemove } from '../../CRUD/delete-flows.js';
+import { getById } from '../../CRUD/get-flows.js';
 import { submitFunc } from '../../CRUD/post-flows.js';
 import { imageURL } from '../dashboard-scripts/image-get.js';
 
@@ -64,8 +65,17 @@ export async function cardCreateNoImg(title, id) {
     location.href = './flow-runner.html';
   });
 
-  newP.appendChild(newBtn);
+  let newBtnUpdate = document.createElement('button');
+  newBtnUpdate.setAttribute('class', 'btn btn-primary mybtn');
+  newBtnUpdate.innerText = 'Update';
+  newBtnUpdate.addEventListener('click', () => {
+    sessionStorage.setItem('id', id);
+    location.href = './flow-builder.html';
+  });
+
   newP.appendChild(newBtnStart);
+  newP.appendChild(newBtnUpdate);
+  newP.appendChild(newBtn);
 
   newDiv.appendChild(newP);
   newA.appendChild(newDiv);
