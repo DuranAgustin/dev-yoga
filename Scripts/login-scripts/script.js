@@ -14,9 +14,6 @@ const loginPassword = document.getElementById('login-password');
 const modal = document.getElementsByClassName('modal');
 const signUp = document.getElementById('signuplink');
 const loginBtn = document.getElementById('login-modal');
-/*signUp.addEventListener("click", ()=> {
-    console.log(click)
-})*/
 
 // closes modal when user clicks "x"
 window.onclick = function (event) {
@@ -78,8 +75,6 @@ submitBtn.addEventListener('click', () => {
   } else {
     alert('Please provide information in all fields');
   }
-
-  //submitUser(firstNameVal, lastNameVal, emailVal, passwordVal);
 });
 
 function ValidateEmail(mail) {
