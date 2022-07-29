@@ -63,7 +63,6 @@ export function cardCreateNoImg(title, id) {
   <h5 class="card-title">${title}</h5>
   </div>
   `;
-
   var newBtn = document.createElement("button");
   newBtn.setAttribute("class", "btn btn-primary");
   newBtn.innerText = "Delete";
