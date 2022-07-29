@@ -1,3 +1,68 @@
+:root {
+  --purple: #73585f;
+  --white: #e9eaf2;
+  --forest-green: #35402a;
+  --beige: #a5a694;
+  --deep-red: #402a22;
+  --sacramento: 'Sacramento', cursive;
+  --background-shadow: 0 2px 4px 0 rgba(11, 12, 12, 0.979),
+    0 5px 15px 0 rgba(5, 5, 5, 0.233);
+}
+
+#welcome {
+  font-family: var(--sacramento);
+  font-size: 5em;
+}
+
+.login-1 {
+  width: 300px;
+}
+
+#logo-id {
+  height: 250px;
+  width: 250px;
+}
+
+#login {
+  background-color: gray;
+}
+
+#login-email {
+  border-radius: 10px;
+  margin-left: 10%;
+}
+
+#login-password {
+  border-radius: 10px;
+  margin-left: 10%;
+}
+
+#login-modal {
+  background-color: #73585f;
+  color: white;
+  padding: 14px 20px;
+  margin-left: 37%;
+  margin-top: 25px;
+  margin-bottom: 15%;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 200px;
+  opacity: 0.9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+#login-title {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: var(--white);
+}
+
+#signup-title {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: var(--white);
+}
+
 body,
 html {
   background-color: #a5a694;
@@ -7,7 +72,7 @@ html {
 /*hero image */
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://www.thehealthy.com/wp-content/uploads/2021/05/GettyImages-1264471889.jpg");
+    url('https://www.thehealthy.com/wp-content/uploads/2021/05/GettyImages-1264471889.jpg');
   border-radius: 10px;
   height: 100%;
   background-position: center;
@@ -36,8 +101,8 @@ html {
   box-sizing: border-box;
 }
 /* Full-width input fields */
-input[type="text"],
-input[type="password"] {
+input[type='text'],
+input[type='password'] {
   text-align: center;
   width: 80%;
   padding: 12px 15px;
@@ -51,8 +116,8 @@ input[type="password"] {
 }
 
 /*when the inputs get focus */
-input[type="text"]:focus,
-input[type="password"]:focus {
+input[type='text']:focus,
+input[type='password']:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -66,20 +131,6 @@ button {
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-#login-modal {
-  background-color: #73585f;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  width: 200px;
   opacity: 0.9;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -103,7 +154,7 @@ button:hover {
 /* Add padding to container elements */
 .container {
   text-align: le;
-  padding: 2rem 0rem;
+  padding: 10px 0px;
 }
 
 /* The Modal (background) */
@@ -117,7 +168,7 @@ button:hover {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-  url("https://www.thehealthy.com/wp-content/uploads/2021/05/GettyImages-1264471889.jpg");
+    url('https://www.thehealthy.com/wp-content/uploads/2021/05/GettyImages-1264471889.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -127,10 +178,20 @@ button:hover {
 
 /* Modal Content/Box */
 .login-modal {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; 
+  background-color: #7c7c7c9b;
+  margin: 5% auto 15% auto;
   border-radius: 20px;
   width: 50%;
+  padding: 25px;
+}
+
+#signup-container > input {
+  margin-left: 10%;
+  border-radius: 10px;
+}
+
+#create-user-btn {
+  margin-left: 30%;
 }
 
 h1 {
@@ -149,11 +210,12 @@ p {
   font-size: 40px;
   font-weight: bold;
   color: #faf6f6;
+  cursor: pointer;
 }
 
 /* Clear floats */
 .submit_btn::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }
