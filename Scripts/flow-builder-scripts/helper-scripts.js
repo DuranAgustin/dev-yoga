@@ -4,6 +4,9 @@ import { submitFunc } from '../../CRUD/post-flows.js';
 import { imageURL } from '../dashboard-scripts/image-get.js';
 import { handleUpdate } from '../../CRUD/update-flows.js';
 
+if (sessionStorage.getItem('id')) {
+  updateFlow();
+}
 //used to create the cards and append them to their container
 export function cardCreate(title, text, img) {
   var newDiv = document.createElement('div');
@@ -193,5 +196,3 @@ export function updatedFlow(flowTitle) {
     console.log(allPoses);
   }
 }
-
-console.log(sessionStorage.getItem('id'));
