@@ -205,12 +205,15 @@
       </script>
       
       <!-- Other scripts -->
-      <script src="https://widget.pandorabots.com/prod/pb-widget.js" type="text/javascript"></script>
+      <script>
+        sessionStorage.clear();
+      </script>
+    <script src="https://widget.pandorabots.com/prod/pb-widget.js" type="text/javascript"></script>
     <script src="../Scripts/nav-bar.js"></script>
     <script
       type="module"
-      src="../Scripts/dashboard-scripts/randombutton.js"
-    ></script>   
+      src="../Scripts/dashboard-scripts/randombutton.js"> 
+    </script>   
 <script type="module" src="../Scripts/dashboard-scripts/saved-flow-init.js"></script>
 <script type="module" src="../CRUD/delete-flows.js"></script>
   </body>

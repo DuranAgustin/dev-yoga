@@ -122,10 +122,8 @@ export function saveFlow() {
   }
 }
 
-export function removeNodes(parentElm) {}
-
 export async function updateFlow() {
-  const flowTitle = prompt('Please enter the name of the update flow');
+  const flowTitle = sessionStorage.getItem('id');
   let obj = await getById(flowTitle);
   console.log(obj);
   // console.log(typeof obj);
@@ -151,15 +149,9 @@ export async function updateFlow() {
     },
     false
   );
-  // dataFlow.forEach((element) => {
-  //   const title = dataFlow.items[element].english_name;
-  //   const text = dataFlow.items[element].yoga_categories[0].description;
-  //   const img = dataFlow.items[element].img_url;
-  //   cardCreate(title, text, img, flowTitle);
-  // });
 }
 
-export function cardCreateDB(title, text, img, flowTitle) {
+export function cardCreateDB(title, text, img) {
   var newDiv = document.createElement('div');
   newDiv.setAttribute('class', 'card newCard');
   newDiv.innerHTML = `
@@ -201,3 +193,5 @@ export function updatedFlow(flowTitle) {
     console.log(allPoses);
   }
 }
+
+console.log(sessionStorage.getItem('id'));
