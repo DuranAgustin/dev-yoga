@@ -94,9 +94,19 @@ Variables for CSS build :root {
   height: 275px;
   width: 16rem;
   overflow: hidden;
+  border-radius: 25px;
+  border: none;
   color: var(#465350);
-  background-image: url(https://images.unsplash.com/photo-1579291465628-98115e927a42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
+  background-color: #c1c6dc;
   box-shadow: var(--background-shadow);
+}
+
+.card-title {
+  color: var(--purple);
+}
+
+.card-text {
+  color: var(--purple);
 }
 
 .card:hover {
