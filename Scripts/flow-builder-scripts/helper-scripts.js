@@ -2,6 +2,7 @@ import { handleRemove } from '../../CRUD/delete-flows.js';
 import { getById } from '../../CRUD/get-flows.js';
 import { submitFunc } from '../../CRUD/post-flows.js';
 import { imageURL } from '../dashboard-scripts/image-get.js';
+import { handleUpdate } from '../../CRUD/update-flows.js';
 
 //used to create the cards and append them to their container
 export function cardCreate(title, text, img) {
