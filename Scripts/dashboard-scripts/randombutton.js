@@ -1,15 +1,11 @@
+import { submitFunc } from '../../CRUD/post-flows.js';
+
 document.getElementById('randomBtn').addEventListener('click', randomGet);
 
 const YOGA_API = 'https://lightning-yoga-api.herokuapp.com/yoga_poses';
 
 export function randomGet() {
-  document.getElementById('clock-container').style.display = 'block';
-  document.getElementById('dash-pose-cards-container').style.display = 'block';
-  if (document.getElementById('dash-pose-grid') !== null) {
-    document.getElementById('dash-pose-grid').innerHTML = '';
-    console.log('clicked random again');
-  }
-
+  let collectionTitle = 'Random Flow';
   fetch(YOGA_API)
     .then((res) => res.json())
     .then((data) => {
@@ -18,49 +14,17 @@ export function randomGet() {
       while (mySet.size < 16) {
         mySet.add(Math.floor(Math.random() * 48));
       }
+      let allPoses = [];
       mySet.forEach((element) => {
-        const title = data.items[element].english_name;
-        const text = data.items[element].yoga_categories[0].description;
-        const img = data.items[element].img_url;
-        cardCreate(title, text, img);
+        const poseObj = {
+          poseName: data.items[element].english_name,
+          poseDescription: data.items[element].yoga_categories[0].description,
+          poseImage: data.items[element].img_url,
+        };
+        allPoses.push(poseObj);
       });
+      let userId = localStorage.getItem('currentUser');
+      submitFunc(collectionTitle, allPoses, userId);
+      console.log(allPoses);
     });
-}
-
-function cardCreate(title, text, img) {
-  var newDiv = document.createElement('div');
-  newDiv.setAttribute('class', 'card');
-  newDiv.setAttribute('style', 'width: 16rem');
-  newDiv.innerHTML = `
-  <div class = "card-body">
-  <img class='card-img-top' src='${img}' alt='card image top'>
-    <h5 class="card-title">${title}</h5>
-    <p class="card-text">${text}</p>
-  </div>
-  `;
-
-  document.getElementById('main').innerHTML =
-    'Please hold each pose for two minutes!';
-  document.getElementById('dash-pose-grid').appendChild(newDiv);
-}
-
-function imgGenerator() {}
-
-export function saveFlow() {
-  let allPoses = [];
-  const poses = Array.from(document.getElementById('main').childNodes);
-
-  //removing the button element from the array of nodes
-  poses.shift();
-
-  poses.forEach((element) => {
-    const poseObj = {
-      poseName: element.querySelector('.card-title').innerHTML,
-      poseDescription: element.querySelector('.card-text').innerHTML,
-    };
-    allPoses.push(poseObj);
-  });
-  //For each card you need to get the title and the innertext
-
-  console.log(allPoses);
 }

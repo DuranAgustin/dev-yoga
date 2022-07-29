@@ -64,7 +64,6 @@ if (flowArray) {
 
   let beep = new Audio('../sounds/ding-ding-sound-effect.mp3');
   let progressBar = document.querySelector('.e-c-progress');
-  let indicator = document.getElementById('e-indicator');
   let pointer = document.getElementById('e-pointer');
   let length = Math.PI * 2 * 100;
 
@@ -83,9 +82,10 @@ if (flowArray) {
 
   let intervalTimer;
   let timeLeft;
-  let wholeTime = 2 * 2; // manage this to set the whole time
+  let wholeTime = 30; // manage this to set the whole time
   let isPaused = false;
   let isStarted = false;
+  let countDown = true;
 
   //setting number of times clock will run
   let timerRun = flowArray.length - 1;
@@ -129,7 +129,14 @@ if (flowArray) {
 
     intervalTimer = setInterval(function () {
       timeLeft = Math.round((remainTime - Date.now()) / 1000);
-      if (timeLeft < 0 && timerCount < timerRun) {
+      if (timeLeft < 0 && timerCount < timerRun && countDown === true) {
+        beep.play();
+        clearInterval(intervalTimer);
+        displayTimeLeft(wholeTime);
+        isStarted = false;
+        countDown = false;
+        pauseTimer();
+      } else if (timeLeft < 0 && timerCount < timerRun) {
         beep.play();
         clearInterval(intervalTimer);
         displayTimeLeft(wholeTime);
@@ -138,7 +145,6 @@ if (flowArray) {
         cardSet(flowArray, flowIndex);
         pauseTimer();
       } else if (timeLeft < 0) {
-        // swapping
         clearInterval(intervalTimer);
         isStarted = false;
         setterBtns.forEach(function (btn) {
@@ -155,8 +161,25 @@ if (flowArray) {
   }
 
   function pauseTimer() {
-    if (isStarted === false) {
+    if (countDown === true) {
       document.getElementById('flow-title').style.display = 'none';
+      let tempTime = wholeTime;
+      wholeTime = 5;
+      sideOrRepeat.innerText = 'Get ready...';
+      timer(wholeTime);
+
+      wholeTime = tempTime;
+      isStarted = true;
+      this.classList.remove('play');
+      this.classList.add('pause');
+
+      setterBtns.forEach(function (btn) {
+        btn.disabled = true;
+        btn.style.opacity = 0.5;
+      });
+    } else if (isStarted === false) {
+      document.getElementById('flow-title').style.display = 'none';
+      sideOrRepeat.innerText = '';
       timer(wholeTime);
       isStarted = true;
       this.classList.remove('play');
@@ -192,8 +215,6 @@ if (flowArray) {
 
   pauseBtn.addEventListener('click', pauseTimer);
 } else if (!flowArray) {
-  //TODO create an error div, append the child and request that the user select a file from the dashboard
-  //provide a link to the dashboard for them to select an item
   main.innerHTML = `<h1 id="error">No Flow Selected:
   <br><br>Please select a saved flow from the 
   <a href='./dashboard.html'>dashboard</a>

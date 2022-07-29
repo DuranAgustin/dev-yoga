@@ -1,41 +1,8 @@
-
-import { handleRemove } from "../../CRUD/delete-flows.js";
-import { submitFunc } from "../../CRUD/post-flows.js";
-import { handleUpdate } from "../../CRUD/update-flows.js";
-import { dbGet, getById } from "../../CRUD/get-flows.js";
+import { handleRemove } from '../../CRUD/delete-flows.js';
+import { getById } from '../../CRUD/get-flows.js';
+import { submitFunc } from '../../CRUD/post-flows.js';
 import { imageURL } from '../dashboard-scripts/image-get.js';
-
-
-const YOGA_API = 'https://lightning-yoga-api.herokuapp.com/yoga_poses';
-
-//Gets all poses from the yoga api
-export function initialGet() {
-  cardCreate(
-    'Repeat',
-    'Repeat all previous moves',
-    '../images/icons8-repeat-64.png'
-  );
-  cardCreate(
-    'Right Side',
-    'Do the following movements on the right side',
-    '../images/icons8-right-arrow-64.png'
-  );
-  cardCreate(
-    'Left Side',
-    'Do the following movements on the left side',
-    '../images/icons8-left-arrow-64.png'
-  );
-  fetch(YOGA_API)
-    .then((res) => res.json())
-    .then((data) => {
-      for (let i = 0; i < data.items.length; i++) {
-        const title = data.items[i].english_name;
-        const text = data.items[i].yoga_categories[0].description;
-        const img = data.items[i].img_url;
-        cardCreate(title, text, img);
-      }
-    });
-}
+import { handleUpdate } from '../../CRUD/update-flows.js';
 
 //used to create the cards and append them to their container
 export function cardCreate(title, text, img) {
@@ -99,8 +66,17 @@ export async function cardCreateNoImg(title, id) {
     location.href = './flow-runner.html';
   });
 
-  newP.appendChild(newBtn);
+  let newBtnUpdate = document.createElement('button');
+  newBtnUpdate.setAttribute('class', 'btn btn-primary mybtn');
+  newBtnUpdate.innerText = 'Update';
+  newBtnUpdate.addEventListener('click', () => {
+    sessionStorage.setItem('id', id);
+    location.href = './flow-builder.html';
+  });
+
   newP.appendChild(newBtnStart);
+  newP.appendChild(newBtnUpdate);
+  newP.appendChild(newBtn);
 
   newDiv.appendChild(newP);
   newA.appendChild(newDiv);
@@ -112,6 +88,8 @@ export function addToList(node) {
   var copyDiv = node.cloneNode();
   copyDiv.innerHTML = node.innerHTML;
   copyDiv.setAttribute('class', 'card newCard');
+  copyDiv.draggable = true;
+
   copyDiv.addEventListener('click', () => {
     copyDiv.remove();
   });
@@ -144,15 +122,12 @@ export function saveFlow() {
   }
 }
 
-export function removeNodes(parentElm) {}
-
-
 export async function updateFlow() {
-  const flowTitle = prompt("Please enter the name of the update flow");
+  const flowTitle = sessionStorage.getItem('id');
   let obj = await getById(flowTitle);
   console.log(obj);
   // console.log(typeof obj);
-  console.log("hit");
+  console.log('hit');
 
   Object.entries(obj).forEach((entry) => {
     const [key, value] = entry;
@@ -166,25 +141,19 @@ export async function updateFlow() {
     );
   });
 
-  console.log("hit2");
-  document.getElementById("updatable").addEventListener(
-    "click",
+  console.log('hit2');
+  document.getElementById('updatable').addEventListener(
+    'click',
     function () {
       updatedFlow(flowTitle);
     },
     false
   );
-  // dataFlow.forEach((element) => {
-  //   const title = dataFlow.items[element].english_name;
-  //   const text = dataFlow.items[element].yoga_categories[0].description;
-  //   const img = dataFlow.items[element].img_url;
-  //   cardCreate(title, text, img, flowTitle);
-  // });
 }
 
-export function cardCreateDB(title, text, img, flowTitle) {
-  var newDiv = document.createElement("div");
-  newDiv.setAttribute("class", "card newCard");
+export function cardCreateDB(title, text, img) {
+  var newDiv = document.createElement('div');
+  newDiv.setAttribute('class', 'card newCard');
   newDiv.innerHTML = `
   <div class = "card-body">
   <img class='card-img-top' src='${img}' alt='card image top'>
@@ -193,12 +162,12 @@ export function cardCreateDB(title, text, img, flowTitle) {
   </div>
   `;
   //removes
-  newDiv.addEventListener("click", () => {
+  newDiv.addEventListener('click', () => {
     newDiv.remove();
   });
 
-  document.getElementById("new-flow-container").appendChild(newDiv);
-  document.getElementById("updatable").removeAttribute("hidden");
+  document.getElementById('new-flow-container').appendChild(newDiv);
+  document.getElementById('updatable').removeAttribute('hidden');
 }
 
 export function updatedFlow(flowTitle) {
@@ -207,14 +176,14 @@ export function updatedFlow(flowTitle) {
   if (id) {
     let allPoses = [];
     const poses = Array.from(
-      document.getElementById("new-flow-container").childNodes
+      document.getElementById('new-flow-container').childNodes
     );
 
     poses.forEach((element) => {
       const poseObj = {
-        poseName: element.querySelector(".card-title").innerHTML,
-        poseDescription: element.querySelector(".card-text").innerHTML,
-        poseImage: element.querySelector(".card-img-top").src,
+        poseName: element.querySelector('.card-title').innerHTML,
+        poseDescription: element.querySelector('.card-text').innerHTML,
+        poseImage: element.querySelector('.card-img-top').src,
       };
       allPoses.push(poseObj);
       element.remove();
@@ -223,5 +192,6 @@ export function updatedFlow(flowTitle) {
     handleUpdate(id, allPoses);
     console.log(allPoses);
   }
-
 }
+
+console.log(sessionStorage.getItem('id'));
