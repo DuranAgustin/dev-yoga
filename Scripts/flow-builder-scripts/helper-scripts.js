@@ -1,6 +1,7 @@
 import { handleRemove } from "../../CRUD/delete-flows.js";
 import { submitFunc } from "../../CRUD/post-flows.js";
-import { imageURL } from "../dashboard-scripts/image-get.js";
+import { handleUpdate } from "../../CRUD/update-flows.js";
+import { dbGet, getById } from "../../CRUD/get-flows.js";
 
 const YOGA_API = "https://lightning-yoga-api.herokuapp.com/yoga_poses";
 
@@ -51,35 +52,20 @@ export function cardCreate(title, text, img) {
   document.getElementById("pose-grid").appendChild(newDiv);
 }
 
-//this function is long because it needs to create elements separately so that the buttons have listeners
-export async function cardCreateNoImg(title, id) {
-  let myImg = await imageURL();
-  let newA = document.createElement("a");
-  newA.setAttribute("class", "card");
-  newA.setAttribute("db-id", `${id}`);
-
-  newA.innerHTML = `
-  <img src="${myImg}" class="card__image" alt="test"/>
-  `;
-
-  let newDiv = document.createElement("div");
-  newDiv.setAttribute("class", "card__overlay");
-
+export function cardCreateNoImg(title, id) {
+  var newDiv = document.createElement("div");
+  newDiv.setAttribute("class", "card");
+  newDiv.setAttribute("id", "flow-card");
+  newDiv.setAttribute("style", "width: 18rem");
+  newDiv.setAttribute("db-id", `${id}`);
   newDiv.innerHTML = `
-  <div class="card__header">
-      <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-      <img class="card__thumb" src="../images/lotus-red.png" alt="" />
-      <div class="card__header-text">
-      <h3 class="card__title"><strong>${title}</strong></h3>            
-  </div> 
+  <div class="card-body">
+  <h5 class="card-title">${title}</h5>
   </div>
   `;
 
-  let newP = document.createElement("p");
-  newP.setAttribute("class", "card__description");
-
-  let newBtn = document.createElement("button");
-  newBtn.setAttribute("class", "btn btn-primary mybtn");
+  var newBtn = document.createElement("button");
+  newBtn.setAttribute("class", "btn btn-primary");
   newBtn.innerText = "Delete";
   newBtn.addEventListener("click", () => {
     if (confirm(`Are you sure you want to delete ${title}`)) {
@@ -87,21 +73,18 @@ export async function cardCreateNoImg(title, id) {
     }
   });
 
-  let newBtnStart = document.createElement("button");
-  newBtnStart.setAttribute("class", "btn btn-primary mybtn");
+  var newBtnStart = document.createElement("button");
+  newBtnStart.setAttribute("class", "btn btn-secondary");
   newBtnStart.innerText = "Start Flow";
   newBtnStart.addEventListener("click", () => {
-    sessionStorage.setItem("id", id);
-    location.href = "./flow-runner.html";
+    console.log("Start Clicked");
   });
+  newDiv.appendChild(newBtnStart);
+  newDiv.appendChild(newBtn);
 
-  newP.appendChild(newBtn);
-  newP.appendChild(newBtnStart);
-
-  newDiv.appendChild(newP);
-  newA.appendChild(newDiv);
-  document.getElementById("saved-flows").appendChild(newA);
+  document.getElementById("saved-flows").appendChild(newDiv);
 }
+
 //function to add the node to the pose list for the flow
 export function addToList(node) {
   var copyDiv = node.cloneNode();
@@ -139,3 +122,81 @@ export function saveFlow() {
 }
 
 export function removeNodes(parentElm) {}
+
+export async function updateFlow() {
+  const flowTitle = prompt("Please enter the name of the update flow");
+  let obj = await getById(flowTitle);
+  console.log(obj);
+  // console.log(typeof obj);
+  console.log("hit");
+
+  Object.entries(obj).forEach((entry) => {
+    const [key, value] = entry;
+    //console.log(key, value);
+    console.log(value.poseName);
+    cardCreateDB(
+      value.poseName,
+      value.poseDescription,
+      value.poseImage,
+      flowTitle
+    );
+  });
+
+  console.log("hit2");
+  document.getElementById("updatable").addEventListener(
+    "click",
+    function () {
+      updatedFlow(flowTitle);
+    },
+    false
+  );
+  // dataFlow.forEach((element) => {
+  //   const title = dataFlow.items[element].english_name;
+  //   const text = dataFlow.items[element].yoga_categories[0].description;
+  //   const img = dataFlow.items[element].img_url;
+  //   cardCreate(title, text, img, flowTitle);
+  // });
+}
+
+export function cardCreateDB(title, text, img, flowTitle) {
+  var newDiv = document.createElement("div");
+  newDiv.setAttribute("class", "card newCard");
+  newDiv.innerHTML = `
+  <div class = "card-body">
+  <img class='card-img-top' src='${img}' alt='card image top'>
+    <h5 class="card-title">${title}</h5>
+    <p class="card-text">${text}</p>
+  </div>
+  `;
+  //removes
+  newDiv.addEventListener("click", () => {
+    newDiv.remove();
+  });
+
+  document.getElementById("new-flow-container").appendChild(newDiv);
+  document.getElementById("updatable").removeAttribute("hidden");
+}
+
+export function updatedFlow(flowTitle) {
+  console.log(flowTitle);
+  let id = flowTitle;
+  if (id) {
+    let allPoses = [];
+    const poses = Array.from(
+      document.getElementById("new-flow-container").childNodes
+    );
+
+    poses.forEach((element) => {
+      const poseObj = {
+        poseName: element.querySelector(".card-title").innerHTML,
+        poseDescription: element.querySelector(".card-text").innerHTML,
+        poseImage: element.querySelector(".card-img-top").src,
+      };
+      allPoses.push(poseObj);
+      element.remove();
+    });
+
+    handleUpdate(id, allPoses);
+    console.log(allPoses);
+  }
+}
