@@ -19,9 +19,10 @@ Variables for CSS build :root {
   padding: 25px;
 }
 
-#save-flow {
+#save-flow,
+#updatable {
   position: relative;
-  left: 80%;
+  left: 73%;
   right: 40%;
   margin: 0.5em;
   border-radius: 15px;
@@ -32,6 +33,11 @@ Variables for CSS build :root {
   background: #a5a6947b;
   color: var(--forest-green);
   cursor: pointer;
+}
+
+#updatable {
+  left: 7%;
+  background: #4654967b;
 }
 
 #save-flow:hover {
