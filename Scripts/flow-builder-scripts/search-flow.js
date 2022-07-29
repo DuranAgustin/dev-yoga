@@ -1,4 +1,6 @@
-import { cardCreate, initialGet } from './helper-scripts.js';
+import { initialGet } from './flow-builder-init.js';
+import { cardCreate } from './helper-scripts.js';
+
 const YOGA_SEARCH_API = `https://lightning-yoga-api.herokuapp.com/yoga_poses?english_name=`;
 const searchBar = document.getElementById('filter-cards');
 const searchButton = document.getElementById('filter-button');
