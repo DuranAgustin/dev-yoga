@@ -1,6 +1,10 @@
-import { handleRemove } from '../../CRUD/delete-flows.js';
-import { submitFunc } from '../../CRUD/post-flows.js';
+
+import { handleRemove } from "../../CRUD/delete-flows.js";
+import { submitFunc } from "../../CRUD/post-flows.js";
+import { handleUpdate } from "../../CRUD/update-flows.js";
+import { dbGet, getById } from "../../CRUD/get-flows.js";
 import { imageURL } from '../dashboard-scripts/image-get.js';
+
 
 const YOGA_API = 'https://lightning-yoga-api.herokuapp.com/yoga_poses';
 
@@ -102,6 +106,7 @@ export async function cardCreateNoImg(title, id) {
   newA.appendChild(newDiv);
   document.getElementById('saved-flows').appendChild(newA);
 }
+
 //function to add the node to the pose list for the flow
 export function addToList(node) {
   var copyDiv = node.cloneNode();
@@ -141,8 +146,82 @@ export function saveFlow() {
 
 export function removeNodes(parentElm) {}
 
-export function updateFlow() {
-  let flowTitle = prompt('Please enter the name of the update flow');
-  let dataFlow = getById(flowTitle);
-  console.log(dataFlow);
+
+export async function updateFlow() {
+  const flowTitle = prompt("Please enter the name of the update flow");
+  let obj = await getById(flowTitle);
+  console.log(obj);
+  // console.log(typeof obj);
+  console.log("hit");
+
+  Object.entries(obj).forEach((entry) => {
+    const [key, value] = entry;
+    //console.log(key, value);
+    console.log(value.poseName);
+    cardCreateDB(
+      value.poseName,
+      value.poseDescription,
+      value.poseImage,
+      flowTitle
+    );
+  });
+
+  console.log("hit2");
+  document.getElementById("updatable").addEventListener(
+    "click",
+    function () {
+      updatedFlow(flowTitle);
+    },
+    false
+  );
+  // dataFlow.forEach((element) => {
+  //   const title = dataFlow.items[element].english_name;
+  //   const text = dataFlow.items[element].yoga_categories[0].description;
+  //   const img = dataFlow.items[element].img_url;
+  //   cardCreate(title, text, img, flowTitle);
+  // });
+}
+
+export function cardCreateDB(title, text, img, flowTitle) {
+  var newDiv = document.createElement("div");
+  newDiv.setAttribute("class", "card newCard");
+  newDiv.innerHTML = `
+  <div class = "card-body">
+  <img class='card-img-top' src='${img}' alt='card image top'>
+    <h5 class="card-title">${title}</h5>
+    <p class="card-text">${text}</p>
+  </div>
+  `;
+  //removes
+  newDiv.addEventListener("click", () => {
+    newDiv.remove();
+  });
+
+  document.getElementById("new-flow-container").appendChild(newDiv);
+  document.getElementById("updatable").removeAttribute("hidden");
+}
+
+export function updatedFlow(flowTitle) {
+  console.log(flowTitle);
+  let id = flowTitle;
+  if (id) {
+    let allPoses = [];
+    const poses = Array.from(
+      document.getElementById("new-flow-container").childNodes
+    );
+
+    poses.forEach((element) => {
+      const poseObj = {
+        poseName: element.querySelector(".card-title").innerHTML,
+        poseDescription: element.querySelector(".card-text").innerHTML,
+        poseImage: element.querySelector(".card-img-top").src,
+      };
+      allPoses.push(poseObj);
+      element.remove();
+    });
+
+    handleUpdate(id, allPoses);
+    console.log(allPoses);
+  }
+
 }
