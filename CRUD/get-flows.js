@@ -1,4 +1,4 @@
-import { cardCreateNoImg } from '../Scripts/flow-builder-scripts/helper-scripts.js';
+import { cardCreateNoImg } from "../Scripts/flow-builder-scripts/helper-scripts.js";
 
 export function dbGet() {
   const serverURL = `https://dev-yoga-api.herokuapp.com/`;

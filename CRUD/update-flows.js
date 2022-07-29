@@ -12,6 +12,12 @@ export async function handleUpdate(id) {
       }
     ),
   });
+  // .then((res) => {
+  //   if (res.ok) return res.json();
+  // })
+  // .then((response) => {
+  //   window.location.reload(false);
+  // });
 }
 
 //TODO - Write the update API so that it passes the new flow to the API and updates it.
