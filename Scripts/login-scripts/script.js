@@ -5,8 +5,10 @@ const firstName = document.getElementById('firstname');
 const lastName = document.getElementById('lastname');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
+const passwordConfirm = document.getElementById('passwordconfirm');
 const submitBtn = document.getElementById('create-user-btn');
 const loginEmail = document.getElementById('login-email');
+const emailConfirm = document.getElementById('emailconfirm');
 const loginPassword = document.getElementById('login-password');
 // Get the modal
 const modal = document.getElementsByClassName('modal');
@@ -53,7 +55,37 @@ submitBtn.addEventListener('click', () => {
   let firstNameVal = firstName.value;
   let lastNameVal = lastName.value;
   let emailVal = email.value;
+  let emailConfirmVal = emailConfirm.value;
   let passwordVal = password.value;
+  let passwordConfirmVal = passwordConfirm.value;
 
-  submitUser(firstNameVal, lastNameVal, emailVal, passwordVal);
+  //Validating that user information provided is adequate
+  if (firstNameVal && lastNameVal && emailVal && passwordVal) {
+    if (ValidateEmail(emailVal)) {
+      if (passwordVal === passwordConfirmVal && emailVal === emailConfirmVal) {
+        submitUser(firstNameVal, lastNameVal, emailVal, passwordVal);
+        firstNameVal = '';
+        lastNameVal = '';
+        emailVal = '';
+        emailConfirmVal = '';
+        passwordVal = '';
+        passwordConfirmVal = '';
+        alert('Account successfully created!');
+      } else {
+        alert('Email or Password confirmations do not match');
+      }
+    }
+  } else {
+    alert('Please provide information in all fields');
+  }
+
+  //submitUser(firstNameVal, lastNameVal, emailVal, passwordVal);
 });
+
+function ValidateEmail(mail) {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    return true;
+  }
+  alert('You have entered an invalid email address!');
+  return false;
+}
